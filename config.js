@@ -1,5 +1,5 @@
 let config = {
-    portDB: 3666,
+    portDB: 27017,
     databaseName: "Chatbot"
 }
 
