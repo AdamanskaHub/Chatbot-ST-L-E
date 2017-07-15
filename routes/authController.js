@@ -76,10 +76,9 @@ router.get("/logout", (req, res) => {
     delete req.session.passport;
     // delete currentUser and passport properties 
     // becasuse when we calling req.logout() is leaving an empty object inside both properties.
-    res.redirect('/');
-
-
+    res.redirect('/login');
 });
+
 
 // router.get("/auth/facebook", passport.authenticate("facebook"));
 // router.get("/auth/facebook/callback", passport.authenticate("facebook", {
