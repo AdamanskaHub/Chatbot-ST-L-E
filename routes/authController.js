@@ -75,7 +75,7 @@ router.get("/logout", (req, res) => {
     delete res.locals.currentUser;
     delete req.session.passport;
     // delete currentUser and passport properties 
-    // becasuse when we calling req.logout() is leaving an empty object inside both properties.
+    // becasuse when we calling req.logout() is leaving an empty object inside both properties.s
     res.redirect('/login');
 });
 
