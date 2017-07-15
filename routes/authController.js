@@ -44,10 +44,13 @@ router.post("/signup", (req, res, next) => {
                 req.flash('error', 'The username already exists');
                 console.log("error of newUser");
                 res.render("auth/signup", { message: req.flash('error') });
+                return res.send(); // I?VE ADDED THAT RANDOMLY
             } else {
                 passport.authenticate("local")(req, res, function() {
+                    //console.log("successful signup of " + user.username);
+                    console.log("redirecting at full power to the main page");
                     res.redirect('/');
-                    console.log("successful signup of " + user.username);
+
                     // JE REDIRIGE VERS UN ENDROIT DONT JE NE SUIS PAS SURE!
                 });
             }
