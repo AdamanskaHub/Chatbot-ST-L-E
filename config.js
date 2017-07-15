@@ -1,6 +1,6 @@
 let config = {
-	portDB: 27017,
-	databaseName: "templateExpress"
+    portDB: 6666,
+    databaseName: "Chatbot"
 }
 
 module.exports = config
