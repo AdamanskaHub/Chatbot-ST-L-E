@@ -55,7 +55,8 @@ router.get("/login", (req, res, next) => {
 });
 
 router.post("/login", passport.authenticate("local", {
-    successRedirect: "/secret",
+    successRedirect: "/",
+    // OH MY GODE !!! CHANGING STUFF
     failureRedirect: "/login",
     failureFlash: true,
     passReqToCallback: true
@@ -72,10 +73,11 @@ router.get("/logout", (req, res) => {
 
 });
 
-router.get("/auth/facebook", passport.authenticate("facebook"));
-router.get("/auth/facebook/callback", passport.authenticate("facebook", {
-    successRedirect: "/secret",
-    failureRedirect: "/"
-}));
+// router.get("/auth/facebook", passport.authenticate("facebook"));
+// router.get("/auth/facebook/callback", passport.authenticate("facebook", {
+//     successRedirect: "/",
+//     // SUCCESS REDIRECT NOT TO THE SECRET
+//     failureRedirect: "/"
+// }));
 
 module.exports = router;
