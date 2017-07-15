@@ -12,18 +12,21 @@ router.get('/signup', function(req, res, next) {
 });
 
 router.post("/signup", (req, res, next) => {
+    console.log("arriving at sign up");
     var username = req.body.username;
     var password = req.body.password;
 
     if (username === "" || password === "") {
         req.flash('error', 'Indicate username and password');
         res.render("auth/signup", { "message": req.flash("error") });
+        console.log("consider the stuff empty");
         return;
     }
 
     User.findOne({ username }, "username", (err, user) => {
         if (user !== null) {
             req.flash('error', 'The username already exists');
+            console.log("already user");
             res.render("auth/signup", { message: req.flash("error") });
             return;
         }
@@ -39,10 +42,12 @@ router.post("/signup", (req, res, next) => {
         newUser.save((err) => {
             if (err) {
                 req.flash('error', 'The username already exists');
+                console.log("error of newUser");
                 res.render("auth/signup", { message: req.flash('error') });
             } else {
                 passport.authenticate("local")(req, res, function() {
                     res.redirect('/');
+                    console.log("successful signup of " + user.username);
                     // JE REDIRIGE VERS UN ENDROIT DONT JE NE SUIS PAS SURE!
                 });
             }
