@@ -1,14 +1,37 @@
-console.log("the main.js is happening");
+// =========================== APP LOGIC ===========================
+
+
+var thefuckingtext = {
+    greeting: ["13413", "rr43532r4", "r43ur827093", "43829743981"],
+    sentenceTwo: ["DDDDDDDD", "GGGGGGGGG", "FFFFFFFF", "Laura"]
+
+};
+
+
+var selected;
+
+function random(param) {
+    selected = param[Math.floor(Math.random() * param.length)];
+}
+
+
+
+// =========================== DISPLAY THE TEXT ===========================
 
 $(document).ready(function() {
-    $(".talk").append("<p>Some text that has been appended</p>");
-    console.log("the main.js is happening on document ready");
+
+    random(thefuckingtext.greeting);
+    $(".talk").append("<p>" + selected + "</p>");
+
+
     setTimeout(function() {
-        $(".talk").append("<p>Do you want work work work work work?</p>");
+        random(thefuckingtext.sentenceTwo);
+        $(".talk").append("<p>" + selected + "</p>");
     }, 3000);
+
 
     setTimeout(function() {
         $(".talk").append("<button>YES</button>");
         $(".talk").append("<button>Hell no!</button>");
-    }, 6000);
+    }, 4500);
 });
