@@ -6,30 +6,76 @@ a {
   color: #00B7FF;
 }
 */
-.main {
-	padding-top: 50px;
-}
-.footer {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	/* Set the fixed height of the footer here */
-	height: 60px;
-	background-color: #f5f5f5;
+
+body {
+    background: linear-gradient(135deg, rgba(215, 212, 248, 1) 0%, rgba(241, 219, 245, 1) 100%) no-repeat;
+    height: 100vh;
 }
 
-.footer > .container {
-	padding-right: 15px;
-	padding-left: 15px;
+.main {
+    padding-top: 50px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #f5f5f5;
+}
+
+.footer>.container {
+    padding-right: 15px;
+    padding-left: 15px;
 }
 
 .container .text-muted {
-	margin: 20px 0;
+    margin: 20px 0;
 }
 
 .login,
 .signup {
-	width: 380px;
-	padding-top: 50px;
-	margin: 0 auto;
+    width: 380px;
+    padding-top: 50px;
+    margin: 0 auto;
+}
+
+.talk {
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
+}
+
+.chat-answers {
+    margin: 10px;
+    background: linear-gradient(135deg, rgba(98, 84, 219, 1) 0%, rgba(201, 109, 216, 1) 100%);
+    display: flex;
+    padding: 10px;
+    border-radius: 4px;
+    color: white;
+}
+
+.user-answers {
+    margin: 10px;
+    background: #fff;
+    display: flex;
+    align-self: flex-end;
+    padding: 10px;
+    border-radius: 4px;
+    color: #333;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.butts {
+    color: #fff;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 4px;
+    margin-left: 10px;
 }
