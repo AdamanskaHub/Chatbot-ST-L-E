@@ -31,7 +31,6 @@ $.ajax({
     success: function(response) {
         chatBotGreetings = response.bot[0].greeting;
         chatBotMessage = response.bot[0].message;
-        console.log(response.bot[0].letsWrite);
         chatBotOther = response.bot[0].otherThings;
         chatBotLetsWrite = response.bot[0].letsWrite;
         chatBotInspireMe = response.bot[0].inspireMe;

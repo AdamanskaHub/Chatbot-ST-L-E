@@ -24,6 +24,10 @@ const bot = new chatBot({
         "Choose a tag.",
         "Select a tag."
     ],
+    letsTag: ["Now we just need a tag.",
+        "Adding the tag and we're done.",
+        "What's the tag for this entry?"
+    ],
     otherThings: ["Alright, what would you like to do?",
         "What should we do then?",
         "Here is what we can do."
@@ -41,11 +45,8 @@ const bot = new chatBot({
         '"I like challenges and meet them head on."',
         '"I never allow the word "no" to stop me"',
         '"I live in the present moment"'
-    ],
-    letsTag: ["Now we just need a tag.",
-        "Adding the tag and we're done.",
-        "What's the tag for this entry?"
     ]
+
 });
 
 chatBot.create(bot, (err, chatBot) => {
