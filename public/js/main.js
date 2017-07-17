@@ -23,9 +23,9 @@ $.ajax({
     url: "http://localhost:7777/chatbot",
     type: "get",
     success: function(response) {
-        chatBotGreetings = response.theSchemaOfTheChatBot[0].greeting;
-        chatBotMessage = response.theSchemaOfTheChatBot[0].messages;
-        console.log(response.theSchemaOfTheChatBot[0].greeting);
+        chatBotGreetings = response.bot[0].greeting;
+        chatBotMessage = response.bot[0].messages;
+        console.log(response.bot[0].greeting);
     },
     error: function(error) { console.log(error) }
 })
