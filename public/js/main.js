@@ -19,6 +19,8 @@ function doItLAter(fct, time) {
 let chatBotGreetings;
 let chatBotMessage;
 let chatBotOther;
+let chatBotLetsWrite;
+
 $.ajax({
     //get the route from route index.js chatbot
     url: "http://localhost:7777/chatbot",
@@ -26,10 +28,11 @@ $.ajax({
     success: function(response) {
         chatBotGreetings = response.bot[0].greeting;
         chatBotMessage = response.bot[0].message;
-        console.log(response.bot[0].message);
+        console.log("this is letswrite " + response.bot[0].letsWrite);
         chatBotOther = response.bot[0].otherThings;
+        chatBotLetsWrite = response.bot[0].letsWrite;
     },
-    error: function(error) { console.log(error) }
+    error: function(error) { console.log(error); }
 });
 
 
@@ -44,7 +47,7 @@ $(document).ready(function() {
     doItLAter(a, 2000);
 
     function b() {
-        random(chatBotMessage);
+        random(chatBotLetsWrite);
         $(".talk").append("<p class='chat-answers'>" + selected + "</p>");
     }
     doItLAter(b, 2000);

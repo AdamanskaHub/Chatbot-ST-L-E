@@ -9,13 +9,16 @@ const bot = new chatBot({
         "Hey  + theUser + , you're back.",
         "I'm happy to see you  + theUser + .",
         "theUser +  are you ready to write?",
-        "Hello + theUser + , ready to writer some positive self talk?"
+        "Hello + theUser + , ready to write some positive self talk?"
     ],
-
+    letsWrite: ["Let's write your positive self talk of the day.",
+        "Time to write some positive self talk.",
+        "Think about positive self talk that you currently need, then write it.",
+        "What do you want to write today?"
+    ],
     message: ["Awesome, you're on the right path.",
         "Great self talk.",
-        "Improving step by step.",
-        "You're doing well ;)"
+        "Improving step by step."
     ],
     whichTag: ["Which tag do you want to add?",
         "Choose a tag.",
