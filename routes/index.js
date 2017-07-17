@@ -5,7 +5,7 @@ var auth    = require('../helpers/auth');
 const chatBot = require('../models/chatbot');
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Chatbot' });
+  res.render('index', { title: 'The fucking awesome Chatbot' });
 });
 //go to this route
 router.get('/chatbot', function(req, res, next) {
