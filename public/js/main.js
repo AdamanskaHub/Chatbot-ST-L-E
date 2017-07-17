@@ -18,17 +18,17 @@ function doItLAter(fct, time) {
 
 let chatBotGreetings;
 let chatBotMessage;
-     $.ajax({
-         //get the route from route index.js chatbot
-       url: "http://localhost:7777/chatbot",
-       type: "get",
-       success: function(response){
-           chatBotGreetings = response.theSchemaOfTheChatBot[0].greeting;
-           chatBotMessage = response.theSchemaOfTheChatBot[0].messages;
-         console.log(response.theSchemaOfTheChatBot[0].greeting);         
-       },
-       error: function(error){console.log(error)}
-     })
+$.ajax({
+    //get the route from route index.js chatbot
+    url: "http://localhost:7777/chatbot",
+    type: "get",
+    success: function(response) {
+        chatBotGreetings = response.theSchemaOfTheChatBot[0].greeting;
+        chatBotMessage = response.theSchemaOfTheChatBot[0].messages;
+        console.log(response.theSchemaOfTheChatBot[0].greeting);
+    },
+    error: function(error) { console.log(error) }
+})
 
 
 // =========================== DISPLAY THE TEXT ===========================
@@ -73,5 +73,5 @@ $(document).ready(function() {
     doItLAter(b, 2000);
     doItLAter(c, 2000);
     doItLAter(d, 2000);
-    
+
 });
