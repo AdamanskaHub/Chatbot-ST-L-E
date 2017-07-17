@@ -65,18 +65,97 @@ $(document).ready(function() {
         $("#inspireAction").remove();
         $("#st").remove();
         $(this).remove();
-        $(".talk").append("<p class='chat-answers'> Yes I have saved the thing</p>");
+        $(".talk").append("<p class='chat-answers'>It's saved!</p>");
         temps = 0;
-        doItLAter(d, 2000);
-
+        doItLAter(theAddTags, 2000);
     }); // on click #save
 
-    // ====== OTHER THINGS
-    function d() {
-        random(chatBotOther);
+    $(document).on("click", "#inspireAction", function() {
+        $("#save").remove();
+        $("#st").remove();
+        $(this).remove();
+        random(chatBotInspireMe);
         $(".talk").append("<p class='chat-answers'>" + selected + "</p>");
+        temps = 0;
+        doItLAter(theInspireQuotes, 2000);
+    }); // on click #save
+
+    // ======= INSPIRE QUOTE
+    function theInspireQuotes() {
+        random(chatBotInspireQuotes);
+        $(".talk").append("<p class='chat-answers'>" + selected + "</p>");
+        doItLAter(theMoreButtons, 2000);
     }
-    //doItLAter(d, 2000);
+
+    // ======= THE ADD TAG
+    function theAddTag() {
+        random(chatBotLetsTag);
+        $(".talk").append("<p class='chat-answers'>" + selected + "</p>");
+        $(".talk").append("<div class='buttons'></div>");
+        $(".buttons").append("<div class='tags' id='1'><p>Tag1</p></div>");
+        $(".buttons").append("<div class='tags' id='2'><p>tag2</p></div>")
+    }
+
+    $(document).on("click", "#1", function() {
+        $(".buttons").remove();
+        $(".talk").append("<p class='user-answers'>Tagged as THE TAG DYNAMICALLY GENERATED</p>");
+        temps = 0;
+        doItLAter(thePostTextBoxButtons, 2000);
+    });
+
+    $(document).on("click", "#2", function() {
+        $(".buttons").remove();
+        $(".talk").append("<p class='user-answers'>Tagged as THE TAG DYNAMICALLY GENERATED</p>");
+        temps = 0;
+        doItLAter(thePostTextBoxButtons, 2000);
+    });
+
+
+    // ======= THE ONE MORE BUTTONS
+    function theMoreButtons() {
+        $(".talk").append("<div class='buttons'></div>");
+        $(".buttons").append("<div class='butts' id='more'><p>One more</p></div>");
+        $(".buttons").append("<div class='butts' id='ready'><p>I'm ready to write</p></div>");
+    }
+
+    $(document).on("click", "#ready", function() {
+        $(".buttons").remove();
+        $(".talk").append("<p class='user-answers'>I'm ready to write</p>");
+        temps = 0;
+        doItLAter(theTextBox, 2000);
+    });
+
+    $(document).on("click", "#more", function() {
+        $(".buttons").remove();
+        $(".talk").append("<p class='user-answers'>One more</p>");
+        temps = 0;
+        doItLAter(theInspireQuotes, 2000);
+    });
+
+    // ======= THE POST TEXT BOX BUTTONS
+    function thePostTextBoxButtons() {
+        $(".talk").append("<div class='buttons'></div>");
+        $(".buttons").append("<div class='butts' id='seeyou'><p>See you</p></div>");
+        $(".buttons").append("<div class='butts' id='other'><p>I want to do something else</p></div>");
+        $(".buttons").append("<div class='butts' id='write'><p>I'll write more</p></div>");
+    }
+
+    $(document).on("click", "#seeyou", function() {
+        $(".buttons").remove();
+        random(chatBotBye);
+        $(".talk").append("<p class='chat-answers'>" + selected + "</p>");
+        temps = 0;
+        // doItLAter(e, 2000);
+    });
+
+    $(document).on("click", "#write", function() {
+        $(".buttons").remove();
+        random(chatBotLetsWrite);
+        $(".talk").append("<p class='chat-answers'>" + selected + "</p>");
+        temps = 0;
+        doItLAter(theTextBox, 2000);
+    });
+
 
 
     // ======= THE BUTTONS
@@ -104,5 +183,12 @@ $(document).ready(function() {
         temps = 0;
         doItLAter(theTextBox, 2000);
     });
+
+    // ====== OTHER THINGS
+    function d() {
+        random(chatBotOther);
+        $(".talk").append("<p class='chat-answers'>" + selected + "</p>");
+    }
+    //doItLAter(d, 2000);
 
 }); // document ready closing
