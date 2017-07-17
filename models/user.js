@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
     username: String,
+    name: String,
     password: String,
     tags: Array,
     selfTalkMessages: Array
