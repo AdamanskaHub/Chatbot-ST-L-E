@@ -20,9 +20,9 @@ const bot = new chatBot({
         "Great self talk.",
         "Improving step by step."
     ],
-    whichTag: ["Which tag do you want to add?",
-        "Choose a tag.",
-        "Select a tag."
+    whichTag: ["Now we just need a tag.",
+        "Adding the tag and we're done.",
+        "What's the tag for this entry?"
     ],
     letsTag: ["Now we just need a tag.",
         "Adding the tag and we're done.",

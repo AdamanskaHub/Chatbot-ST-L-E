@@ -22,7 +22,7 @@ let chatBotOther;
 let chatBotLetsWrite;
 let chatBotInspireMe;
 let chatBotInspireQuotes;
-let chatBotLetsTag;
+let chatBotwhichTag;
 
 $.ajax({
     //get the route from route index.js chatbot
@@ -35,7 +35,7 @@ $.ajax({
         chatBotLetsWrite = response.bot[0].letsWrite;
         chatBotInspireMe = response.bot[0].inspireMe;
         chatBotInspireQuotes = response.bot[0].inspireQuotes;
-        chatBotLetsTag = response.bot[0].letsTag;
+        chatBotwhichTag = response.bot[0].whichTag;
     },
     error: function(error) { console.log(error); }
 });
@@ -64,7 +64,7 @@ $(document).ready(function() {
     // ======= THE TEXT BOX
 
     function theTextBox() {
-        $(".talk").append('<div class="st-form"> <textarea type="text" class="st-box" id="st" placeholder="Your positive self talk" name="st"></textarea></div><button class="btn btn-save" id="inspireAction">I don\'t know what to write</button><button type="submit" class="btn btn-save" id="save">Save</button>');
+        $(".talk").append('<div class="st-form"> <textarea type="text" class="st-box" id="st" placeholder="Your positive self talk" name="st"></textarea></div><div class="buttons"><button class="btn btn-save" id="inspireAction">I don\'t know what to write</button><button type="submit" class="btn btn-save" id="save">Save</button></div>');
     }
 
     $(document).on("click", "#save", function() {
@@ -100,23 +100,23 @@ $(document).ready(function() {
 
     // ======= THE ADD TAG
     function theAddTag() {
-        random(chatBotLetsTag);
+        random(chatBotwhichTag);
         $(".talk").append("<p class='chat-answers'>" + selected + "</p>");
         $(".talk").append("<div class='buttons'></div>");
-        $(".buttons").append("<div class='tags' id='1'><p>Tag1</p></div>");
-        $(".buttons").append("<div class='tags' id='2'><p>tag2</p></div>");
+        $(".buttons").append("<div class='butts tags' id='tag1'><p>Tag1</p></div>");
+        $(".buttons").append("<div class='butts tags' id='tag2'><p>tag2</p></div>");
+        $(".buttons").append("<div class='butts tags' id='new'><p>Add a new tag</p></div>");
         // IF NUMBER OF TAGS > 6 ===> fuck this no add
-        $(".buttons").append("<div class='tags' id='new'><p>Add a new tag</p></div>");
     }
 
-    $(document).on("click", "#1", function() {
+    $(document).on("click", "#tag1", function() {
         $(".buttons").remove();
         $(".talk").append("<p class='user-answers'>Tagged as THE TAG DYNAMICALLY GENERATED</p>");
         temps = 0;
         doItLAter(thePostTextBoxButtons, 2000);
     });
 
-    $(document).on("click", "#2", function() {
+    $(document).on("click", "#tag2", function() {
         $(".buttons").remove();
         $(".talk").append("<p class='user-answers'>Tagged as THE TAG DYNAMICALLY GENERATED</p>");
         temps = 0;

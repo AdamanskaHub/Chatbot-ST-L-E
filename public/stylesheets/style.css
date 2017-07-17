@@ -84,7 +84,7 @@ a:hover {
     height: 70vh;
     display: flex;
     justify-content: center;
-    margin-top: 5vh;
+    margin-top: 3vh;
 }
 
 .bottom-box {
@@ -178,6 +178,8 @@ a:hover {
     align-self: flex-end;
     margin-top: -10px;
     background-color: #333;
+    flex-shrink: 0;
+    margin-left: 10px;
 }
 
 textarea:focus {
