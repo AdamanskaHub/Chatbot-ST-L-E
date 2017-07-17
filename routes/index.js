@@ -10,11 +10,11 @@ router.get('/', function(req, res, next) {
 //go to this route
 router.get('/chatbot', function(req, res, next) {
 //get all info from chatbot collection, finds and prints all info
-  chatBot.find({}, (err, theSchemaOfTheChatBot) =>{
+  chatBot.find({}, (err, bot) =>{
     if(err){return next(err)}
     console.log('chatbotFrase');
     //data transformed to json
-    res.json({theSchemaOfTheChatBot})   
+    res.json({bot})   
   }) 
 });
 
