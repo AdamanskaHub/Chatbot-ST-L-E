@@ -32,15 +32,19 @@ const bot = new chatBot({
         "I'll give you some examples of positive self talk.",
         "Have a look at those examples of positive self talk, it might inspire you."
     ],
-    inspireQuotes: ["I'm doing better everyday.",
-        "I can handle this.",
-        "I'll get it.",
-        "I'm amazing at that",
-        "I allow myself to fail as it allows me to improve.",
-        "I love to take action.",
-        "I like challenges and meet them head on.",
-        "I never allow the word 'no' to stop me",
-        "I live in the present moment"
+    inspireQuotes: ['"I\'m doing better everyday."',
+        '"I can handle this."',
+        '"I\'ll get it."',
+        '"I\'m amazing at that"',
+        '"I allow myself to fail as it allows me to improve."',
+        '"I love to take action."',
+        '"I like challenges and meet them head on."',
+        '"I never allow the word "no" to stop me"',
+        '"I live in the present moment"'
+    ],
+    letsTag: ["Now we just need a tag.",
+        "Adding the tag and we're done.",
+        "What's the tag for this entry?"
     ]
 });
 
