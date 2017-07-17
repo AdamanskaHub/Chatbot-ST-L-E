@@ -10,6 +10,7 @@ var temps = 0;
 
 function doItLAter(fct, time) {
     temps += time;
+    console.log(temps);
     setTimeout(function() {
         fct();
     }, temps);
@@ -46,13 +47,26 @@ $(document).ready(function() {
 
     function c() {
         $(".talk").append("<div class='buttons'></div>");
-        $(".buttons").append("<div class='butts'>YES</div>");
-        $(".buttons").append("<div class='butts'>Hell no!</div>");
+        $(".buttons").append("<div class='butts' id='pos'><p>YES</p></div>");
+        $(".buttons").append("<div class='butts' id='neg'><p>Hell no!</p></div>");
     }
+
+    $(document).on("click", "#pos", function() {
+        console.log("button clicked");
+        $(this).remove();
+        $(".buttons").remove();
+        $(".talk").append("<p class='user-answers'> Yes</p>");
+        temps = 0;
+        doItLAter(d, 2000);
+    });
 
     function d() {
         random(chatBotMessage);
         $(".talk").append("<p class='user-answers'>" + selected + "</p>");
+    }
+
+    function e() {
+        $(".talk").append('<div class="st-form"> <textarea type="text" class="st-box" id="st" placeholder="Your positive self talk" name="st"></textarea></div><button type="submit" class="btn btn-save">Save</button>');
     }
 
     doItLAter(a, 2000);
