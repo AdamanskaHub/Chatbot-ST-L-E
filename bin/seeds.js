@@ -39,7 +39,7 @@ const bot = new chatBot({
         "I never allow the word 'no' to stop me",
         "I live in the present moment"
     ]
-})
+});
 
 chatBot.create(bot, (err, chatBot) => {
         if (err) {

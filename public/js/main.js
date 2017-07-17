@@ -75,14 +75,24 @@ $(document).ready(function() {
     });
 
     function d() {
-        random(chatBotMessage);
-        $(".talk").append("<p class='user-answers'>" + selected + "</p>");
+        random(chatBotOther);
+        $(".talk").append("<p class='chat-answers'>" + selected + "</p>");
     }
     //doItLAter(d, 2000);
 
     function e() {
-        $(".talk").append('<div class="st-form"> <textarea type="text" class="st-box" id="st" placeholder="Your positive self talk" name="st"></textarea></div><button type="submit" class="btn btn-save">Save</button>');
+        $(".talk").append('<div class="st-form"> <textarea type="text" class="st-box" id="st" placeholder="Your positive self talk" name="st"></textarea></div><button class="btn btn-save" id="inspireAction">I don\'t know what to write</button><button type="submit" class="btn btn-save" id="save">Save</button>');
     }
+
+    $(document).on("click", "#save", function() {
+        console.log($("#st").val());
+        $("#inspireAction").remove();
+        $("#st").remove();
+        $(this).remove();
+        $(".talk").append("<p class='chat-answers'> Yes I have saved the thing</p>");
+        temps = 0;
+        doItLAter(d, 2000);
+    });
 
 
 });
