@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     username: String,
     password: String,
-    tags: String,
-    selfTalkMessages: String
+    tags: Array,
+    selfTalkMessages: Array
         // role: {
         // 	type: String,
         // 	enum : ['EDITOR', 'ADMIN'],
