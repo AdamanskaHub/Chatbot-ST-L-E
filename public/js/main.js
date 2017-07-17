@@ -1,13 +1,5 @@
 // =========================== APP LOGIC ===========================
 
-
-var thefuckingtext = {
-    greeting: ["13413", "rr43532r4", "r43ur827093", "43829743981"],
-    sentenceTwo: ["DDDDDDDD", "GGGGGGGGG", "FFFFFFFF", "Laura"],
-    aaa: ["D.va", "Sombra", "Tracer"]
-};
-
-
 var selected;
 
 function random(param) {
@@ -23,6 +15,11 @@ function doItLAter(fct, time) {
     }, temps);
 }
 
+var thefuckingtext = {
+    greeting: ["Emilie", "Laura", "Popular Laura", "Shy Emilie"],
+    sentenceTwo: ["Dislikes", "Hates", "Can't stand", "Vomits thinking about"],
+    aaa: ["Emilie", "Laura", "Popular Laura", "Shy Emilie"]
+};
 
 
 // =========================== DISPLAY THE TEXT ===========================

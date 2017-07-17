@@ -8,8 +8,21 @@ a {
 */
 
 body {
-    background: linear-gradient(135deg, rgba(215, 212, 248, 1) 0%, rgba(241, 219, 245, 1) 100%) no-repeat;
+    /* background: linear-gradient(135deg, rgba(215, 212, 248, 1) 0%, rgba(241, 219, 245, 1) 100%) no-repeat; */
+    background: linear-gradient(135deg, rgba(95, 80, 227, 1) 0%, rgba(195, 104, 214, 1) 100%) no-repeat;
     height: 100vh;
+    color: #fff;
+}
+
+a {
+    color: #fff;
+}
+
+a:focus,
+a:hover {
+    text-decoration-style: none;
+    text-decoration: none;
+    color: #fff;
 }
 
 .main {
@@ -31,7 +44,7 @@ body {
 }
 
 .container .text-muted {
-    margin: 20px 0;
+    margin: 20px;
 }
 
 .login,
@@ -41,10 +54,34 @@ body {
     margin: 0 auto;
 }
 
+
+/* ================= TOP BOX ================== */
+
+.top-box {
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100vw;
+    /* HACK */
+    padding: 20px 0 30px 70px;
+    margin-left: -70px;
+}
+
+
+/* ================= TALK BOX ================== */
+
+.talk-box {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
 .talk {
     display: flex;
     align-items: baseline;
     flex-direction: column;
+    /* background: linear-gradient(135deg, rgba(215, 212, 248, 1) 0%, rgba(241, 219, 245, 1) 100%) no-repeat; */
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 10px;
 }
 
 .chat-answers {
