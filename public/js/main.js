@@ -11,30 +11,34 @@ var temps = 0;
 function doItLAter(fct, time) {
     temps += time;
     console.log(temps);
-    setTimeout(function() {
+    setTimeout(function () {
         fct();
     }, temps);
 }
-
+//chatbot call
 let chatBotGreetings;
 let chatBotMessage;
 $.ajax({
     //get the route from route index.js chatbot
     url: "http://localhost:7777/chatbot",
     type: "get",
-    success: function(response) {
+    success: function (response) {
         chatBotGreetings = response.bot[0].greeting;
         chatBotMessage = response.bot[0].writeMessage;
         console.log(response.bot[0].writeMessage);
     },
-    error: function(error) { console.log(error) }
+    error: function (error) { console.log(error) }
 });
-
 
 // =========================== DISPLAY THE TEXT ===========================
 
-$(document).ready(function() {
+$(document).ready(function () {
 
+
+    $("#self").click(function (event) {
+        console.log('form');
+        event.preventDefault();
+    });
     function a() {
         random(chatBotGreetings);
         $(".talk").append("<p class='chat-answers'>" + selected + "</p>");
@@ -54,7 +58,7 @@ $(document).ready(function() {
     }
     doItLAter(c, 2000);
 
-    $(document).on("click", "#pos", function() {
+    $(document).on("click", "#pos", function () {
         console.log("button clicked");
         $(this).remove();
         $(".buttons").remove();
@@ -63,7 +67,7 @@ $(document).ready(function() {
         doItLAter(e, 2000);
     });
 
-    $(document).on("click", "#pos", function() {
+    $(document).on("click", "#pos", function () {
         console.log("button clicked");
         $(this).remove();
         $(".buttons").remove();
@@ -79,7 +83,35 @@ $(document).ready(function() {
     //doItLAter(d, 2000);
 
     function e() {
-        $(".talk").append('<div class="st-form"> <textarea type="text" class="st-box" id="st" placeholder="Your positive self talk" name="st"></textarea></div><button type="submit" class="btn btn-save">Save</button>');
+        //add method post for all user data
+        $(".talk").append('<form id="self" action="/comment" method="POST"> <div class="st-form"><textarea type="text" class="st-box" id="selfTalk" placeholder="Your positive self talk" name="selfTalk"></textarea></div><button type="button" id="addComment" class="btn btn-save">Save</button></form>');
+        //when button saved prevents refreshing page and adds the value to message object,
+        //created ajax method that will do post on /comment
+        //sends message object val.
+        $(".btn-save").click(function (e) {
+            console.log('wgsggwgwgwg');
+
+            e.preventDefault();
+            e.stopPropagation()
+            var message = {
+                text: $("#selfTalk").val(),
+                tag: "TEST-TAG",
+                date: Date
+            }
+            console.log("MESSAGE", message);
+            $.ajax({
+                //get the route from route index.js chatbot
+                url: "http://localhost:7777/comment",
+                type: "POST",
+                data: { message },
+                success: function (response) {
+                    //remove text area add text
+                    $("#selfTalk").val("");
+                    console.log(response);
+                },
+                error: function (error) { console.log(error) }
+            });
+        })
     }
 
 

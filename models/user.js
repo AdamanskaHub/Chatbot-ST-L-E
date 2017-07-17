@@ -7,11 +7,6 @@ const userSchema = new Schema({
     password: String,
     tags: Array,
     selfTalkMessages: Array
-        // role: {
-        // 	type: String,
-        // 	enum : ['EDITOR', 'ADMIN'],
-        // 	default : 'ADMIN'
-        // }
 }, {
     timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
 });
