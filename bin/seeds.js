@@ -12,7 +12,7 @@ const bot = new chatBot({
         "Hello + theUser + , ready to writer some positive self talk?"
     ],
 
-    writeMessage: ["Awesome, you're on the right path.",
+    message: ["Awesome, you're on the right path.",
         "Great self talk.",
         "Improving step by step.",
         "You're doing well ;)"

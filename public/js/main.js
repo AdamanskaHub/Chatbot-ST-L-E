@@ -18,14 +18,16 @@ function doItLAter(fct, time) {
 
 let chatBotGreetings;
 let chatBotMessage;
+let chatBotOther;
 $.ajax({
     //get the route from route index.js chatbot
     url: "http://localhost:7777/chatbot",
     type: "get",
     success: function(response) {
         chatBotGreetings = response.bot[0].greeting;
-        chatBotMessage = response.bot[0].writeMessage;
-        console.log(response.bot[0].writeMessage);
+        chatBotMessage = response.bot[0].message;
+        console.log(response.bot[0].message);
+        chatBotOther = response.bot[0].otherThings;
     },
     error: function(error) { console.log(error) }
 });
@@ -63,7 +65,7 @@ $(document).ready(function() {
         doItLAter(e, 2000);
     });
 
-    $(document).on("click", "#pos", function() {
+    $(document).on("click", "#neg", function() {
         console.log("button clicked");
         $(this).remove();
         $(".buttons").remove();
@@ -81,10 +83,6 @@ $(document).ready(function() {
     function e() {
         $(".talk").append('<div class="st-form"> <textarea type="text" class="st-box" id="st" placeholder="Your positive self talk" name="st"></textarea></div><button type="submit" class="btn btn-save">Save</button>');
     }
-
-
-
-
 
 
 });

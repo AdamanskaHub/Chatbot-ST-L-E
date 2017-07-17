@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const chatBotSchema = new Schema({
     greeting: Array,
-    messages: Array,
+    message: Array,
     writeMessage: Array,
     whichTag: Array,
     otherThings: Array,
