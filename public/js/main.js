@@ -106,29 +106,32 @@ $(document).ready(function() {
     function theAddTag() {
         random(chatBotwhichTag);
         $(".talk").append("<p class='chat-answers'>" + selected + "</p>");
-        $(".talk").append("<div class='buttons'></div>");
-        $(".buttons").append("<div class='butts tags' id='tag1'><p>Tag1</p></div>");
-        $(".buttons").append("<div class='butts tags' id='tag2'><p>tag2</p></div>");
-        $(".buttons").append("<div class='butts tags' id='new'><p>Add a new tag</p></div>");
+        setTimeout(function() {
+            $(".talk").append("<div class='buttons-tag'></div>");
+            $(".buttons-tag").append("<div class='butts tags' id='tag1'><p>Tag1</p></div>");
+            $(".buttons-tag").append("<div class='butts tags' id='tag2'><p>tag2</p></div>");
+            $(".buttons-tag").append("<div class='butts tags' id='new'><p>Add a new tag</p></div>");
+        }, 1000);
+
         // IF NUMBER OF TAGS > 6 ===> fuck this no add
     }
 
     $(document).on("click", "#tag1", function() {
-        $(".buttons").remove();
+        $(".buttons-tag").remove();
         $(".talk").append("<p class='user-answers'>Tagged as THE TAG DYNAMICALLY GENERATED</p>");
         temps = 0;
         doItLAter(thePostTextBoxButtons, 2000);
     });
 
     $(document).on("click", "#tag2", function() {
-        $(".buttons").remove();
+        $(".buttons-tag").remove();
         $(".talk").append("<p class='user-answers'>Tagged as THE TAG DYNAMICALLY GENERATED</p>");
         temps = 0;
         doItLAter(thePostTextBoxButtons, 2000);
     });
 
     $(document).on("click", "#new", function() {
-        $(".buttons").remove();
+        $(".buttons-tag").remove();
         // WAY TO ADD A NEW TAG GOES HERE!!!!!
         $(".talk").append('<input type="text" name="New tag" value="New tag"><button type="submit" class="btn btn-save" id="add">Add</button>');
         temps = 0;

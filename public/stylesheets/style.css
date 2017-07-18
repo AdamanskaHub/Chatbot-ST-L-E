@@ -126,7 +126,8 @@ a:hover {
     flex-shrink: 0;
 }
 
-.buttons {
+.buttons,
+.buttons-tag {
     display: flex;
     justify-content: center;
     width: 100%;
