@@ -1,0 +1,122 @@
+    body {
+        /* background: linear-gradient(135deg, rgba(215, 212, 248, 1) 0%, rgba(241, 219, 245, 1) 100%) no-repeat; */
+        background: linear-gradient(135deg, rgba(95, 80, 227, 1) 0%, rgba(195, 104, 214, 1) 100%) no-repeat;
+        height: 100%;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .container {
+        height: 100vh;
+    }
+    
+    .butts2 {
+        color: #fff;
+        background-color: #333;
+        padding: 10px;
+        border-radius: 4px;
+        flex-shrink: 0;
+    }
+    
+    .logbox {
+        width: 400px;
+        height: auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.8);
+        box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+    }
+    
+    .account-message,
+    .account-message>a {
+        color: #333;
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+    .account-message>a {
+        text-decoration: underline;
+    }
+    
+    .form-group>input {
+        height: 40px;
+    }
+    
+    .form-group>label {
+        font-weight: normal;
+        color: #333;
+        margin-bottom: 0;
+    }
+    
+    .btn.focus,
+    .btn:focus,
+    .btn:hover {
+        color: #fff;
+        text-decoration: none;
+    }
+    
+    .btn.active.focus,
+    .btn.active:focus,
+    .btn.focus,
+    .btn:active.focus,
+    .btn:active:focus,
+    .btn:focus {
+        outline: none;
+        outline-offset: 0;
+    }
+    
+    .butts2:hover,
+    .butts2:focus,
+    .butts2:active {
+        background-color: #8659de;
+        /* font-weight: bold; */
+    }
+    
+    img {
+        height: 270px;
+        width: auto;
+    }
+    
+    .zen {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .login {
+        padding-top: 0;
+    }
+    
+    .bubblebox {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    
+    .bubblebox2 {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 5px;
+    }
+    
+    .bubble {
+        width: 400px;
+        height: auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.8);
+        box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+        color: #333;
+    }
+    
+    #queue {
+        height: 20px;
+    }
+    
+    form>.alert {
+        border: none;
+        background: none;
+        padding: 0;
+        margin: 0px 0 20px;
+        font-weight: bold;
+    }
