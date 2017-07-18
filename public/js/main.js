@@ -11,9 +11,17 @@ var temps = 0;
 function doItLAter(fct, time) {
     temps += time;
     console.log(temps);
-    setTimeout(function () {
+    setTimeout(function() {
         fct();
     }, temps);
+}
+
+function chatTalk() {
+    $(".talk").append("<div class='chatbox'><img src='../img/tinyhead.png'><p class='chat-answers'>" + selected + "</p></div>");
+}
+
+function chatTalk2(param, who) {
+    $(".talk").append("<div class='chatbox'><img src='../img/tinyhead.png'><p class='" + who + "-answers'>" + param + "</p></div>");
 }
 
 function scrollThatStuff() {
@@ -21,7 +29,15 @@ function scrollThatStuff() {
         scrollTop: $('.talk').get(0).scrollHeight
     }, 2000);
 }
+<<<<<<< HEAD
 //chatbot calls
+=======
+
+
+let dotdot = "<div class='chatbox2'><img src='../img/tinyhead.png'><div class='threedotloader'><div class='dot'></div><div class='dot'></div><div class='dot'></div></div></div>";
+
+//chatbot call
+>>>>>>> 327756d46d3633b5db9fb3ac2b01d82cd643f4d0
 let chatBotGreetings;
 let chatBotMessage;
 let chatBotOther;
@@ -38,7 +54,7 @@ $.ajax({
     //get the route from route index.js chatbot
     url: "http://localhost:7777/chatbot",
     type: "get",
-    success: function (response) {
+    success: function(response) {
         chatBotGreetings = response.bot[0].greeting;
         chatBotMessage = response.bot[0].message;
         chatBotOther = response.bot[0].otherThings;
@@ -48,7 +64,7 @@ $.ajax({
         chatBotwhichTag = response.bot[0].whichTag;
         chatBotPositive = response.bot[0].positiveM;
     },
-    error: function (error) { console.log(error); }
+    error: function(error) { console.log(error); }
 });
 
 
@@ -79,29 +95,36 @@ $.ajax({
 
 // =========================== DISPLAY THE TEXT ===========================
 
-$(document).ready(function () {
+$(document).ready(function() {
 
     var message = "initial value";
 
-    $("#self").click(function (event) {
+    $("#self").click(function(event) {
         console.log('form');
         event.preventDefault();
     });
 
+    $(".talk").append(dotdot);
     // ========== GREETING
     function theGreeting() {
+        $(".chatbox2").remove();
         random(chatBotGreetings);
-        $(".talk").append("<p class='chat-answers'>" + selected + "</p>");
+        chatTalk();
+
     }
     doItLAter(theGreeting, 2000);
 
     // ======= LETS WRITE
     function theLetsWrite() {
-        random(chatBotLetsWrite);
-        $(".talk").append("<p class='chat-answers'>" + selected + "</p>");
-        scrollThatStuff();
-        temps = 0;
-        doItLAter(theTextBox, 2000);
+        $(".talk").append(dotdot);
+        setTimeout(function() {
+            $(".chatbox2").remove();
+            random(chatBotLetsWrite);
+            chatTalk();
+            scrollThatStuff();
+            temps = 0;
+            doItLAter(theTextBox, 1000);
+        }, 3000);
     }
     doItLAter(theLetsWrite, 2000);
 
@@ -113,21 +136,37 @@ $(document).ready(function () {
         // AUTO SCROLL FOR CHAT
         scrollThatStuff();
     }
-    //======== ON CLICK SAVE TEXTAREA 
-    $(document).on("click", "#save", function (e) {
+
+    //======== ON CLICK SAVE 
+    $(document).on("click", "#save", function(e) {
+
         e.preventDefault();
         message = $("#st").val();
         console.log("MESSAGE", message);
-        
+        $.ajax({
+            //get the route from route index.js chatbot
+            url: "http://localhost:7777/comment",
+            type: "POST",
+            data: { message },
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(error) { console.log(error) }
+        });
+
+        // ============== THE FRONT END STUFF ===============
         $(".talk").append("<p class='user-answers'>" + $("#st").val() + "</p>");
         $("#inspireAction").remove();
         $("#st").remove();
         $(".st-form").remove();
         $(this).remove();
         scrollThatStuff();
-        setTimeout(function () {
-            $(".talk").append("<p class='chat-answers'>It's saved!</p>");
+        $(".talk").append(dotdot); // #1
+        setTimeout(function() {
+            $(".chatbox2").remove();
+            chatTalk2("It's saved!", "chat");
             scrollThatStuff();
+            $(".talk").append(dotdot); // #2
         }, 1000);
         temps = 0;
         doItLAter(theAddTag, 2000);
@@ -135,18 +174,22 @@ $(document).ready(function () {
     });
 
 
-    $(document).on("click", "#inspireAction", function () {
+    $(document).on("click", "#inspireAction", function() {
         $(".buttons").remove();
         $("#save").remove();
         $("#st").remove();
         $(".st-form").remove();
         $(this).remove();
-        $(".talk").append("<p class='user-answers'>I don\'t know what to write</p>");
+        $(".chatbox2").remove();
+        $(".talk").append("<p class='user-answers'>I don't know what to write, help me</p>");
         scrollThatStuff();
-        random(chatBotInspireMe);
-        setTimeout(function () {
-            $(".talk").append("<p class='chat-answers'>" + selected + "</p>");
+        $(".talk").append(dotdot);
+        setTimeout(function() {
+            $(".chatbox2").remove();
+            random(chatBotInspireMe);
+            chatTalk();
             temps = 0;
+            $(".talk").append(dotdot);
             scrollThatStuff();
             doItLAter(theInspireQuotes, 2000);
         }, 2000);
@@ -155,21 +198,21 @@ $(document).ready(function () {
 
     // ======= INSPIRE QUOTE
     function theInspireQuotes() {
+        $(".chatbox2").remove();
         random(chatBotInspireQuotes);
-        $(".talk").append("<p class='chat-answers'>" + selected + "</p>");
+        chatTalk();
         scrollThatStuff();
-        doItLAter(theMoreButtons, 2000);
+        doItLAter(theMoreButtons, 600);
     }
 
     // ======= THE ADD TAG
     function theAddTag() {
-        console.log("add tag", message)
+        $(".chatbox2").remove();
         random(chatBotwhichTag);
-        $(".talk").append("<p class='chat-answers'>" + selected + "</p>");
-        setTimeout(function () {
+        chatTalk();
+        setTimeout(function() {
             $(".talk").append("<div class='buttons-tag'></div>");
             $(".buttons-tag").append("<div class='butts tags' id='tag1'><p>Tag1</p></div>");
-            $(".buttons-tag").append("<div class='butts tags' id='tag2'><p>tag2</p></div>");
             $(".buttons-tag").append("<div class='butts tags' id='new'><p>Add a new tag</p></div>");
             scrollThatStuff();
         }, 1000);
@@ -177,29 +220,18 @@ $(document).ready(function () {
         // IF NUMBER OF TAGS > 6 ===> fuck this no add
     }
 
-    $(document).on("click", "#tag1", function () {
+    $(document).on("click", "#tag1", function() {
         $(".buttons-tag").remove();
         $(".talk").append("<p class='user-answers'>We need to grab the name of the tag and put it here!</p>");
         scrollThatStuff();
         random(chatBotPositive);
-        $(".talk").append("<p class='chat-answers'>" + selected + "</p>");
+        chatTalk();
         scrollThatStuff();
         temps = 0;
         doItLAter(thePostTextBoxButtons, 2000);
     });
 
-    $(document).on("click", "#tag2", function () {
-        $(".buttons-tag").remove();
-        $(".talk").append("<p class='user-answers'>We need to grab the name of the tag and put it here!</p>");
-        scrollThatStuff();
-        random(chatBotPositive);
-        $(".talk").append("<p class='chat-answers'>" + selected + "</p>");
-        scrollThatStuff();
-        temps = 0;
-        doItLAter(thePostTextBoxButtons, 2000);
-    });
-
-    $(document).on("click", "#new", function () {
+    $(document).on("click", "#new", function() {
         console.log("in new tag button", message)
         $(".buttons-tag").remove();
         // WAY TO ADD A NEW TAG GOES HERE!!!!!
@@ -209,7 +241,7 @@ $(document).ready(function () {
     });
 
     //======== ON CLICK ADD NEW TAG AJAX CALL
-    $(document).on("click", "#add", function (e) {
+    $(document).on("click", "#add", function(e) {
         //add method post for all user data
         //when button saved prevents refreshing page and adds the value to message object,
         //created ajax method that will do post on /comment
@@ -223,13 +255,18 @@ $(document).ready(function () {
         $.ajax({
             url: "http://localhost:7777/comment",
             type: "POST",
+<<<<<<< HEAD
             data: { message: message,
                     tag: $("#new-tag").val(),
                     date: new Date() },
             success: function (response) {
+=======
+            data: { message },
+            success: function(response) {
+>>>>>>> 327756d46d3633b5db9fb3ac2b01d82cd643f4d0
                 console.log(response);
             },
-            error: function (error) { console.log(error) }
+            error: function(error) { console.log(error) }
         });
         // ADDING THE NEWLY GENERATED TAG
         $(".talk").append("<p class='user-answers'>" + $("#new-tag").val() + "</p>");
@@ -237,8 +274,8 @@ $(document).ready(function () {
         $("input").remove();
         $("#add").remove();
 
-        setTimeout(function () {
-            $(".talk").append("<p class='chat-answers'>Your new tag has been saved.</p>");
+        setTimeout(function() {
+            chatTalk2("Your new tag has been saved.", "chat");
             scrollThatStuff();
         }, 1000);
         // SAYING IT'S DONE
@@ -254,20 +291,24 @@ $(document).ready(function () {
         scrollThatStuff();
     }
 
-    $(document).on("click", "#ready", function () {
+    $(document).on("click", "#ready", function() {
         $(".buttons").remove();
         $(".talk").append("<p class='user-answers'>I'm ready to write</p>");
         temps = 0;
         scrollThatStuff();
-        doItLAter(theTextBox, 2000);
+        // $(".talk").append(dotdot);
+        doItLAter(theLetsWrite, 2000);
+        // Or it0s theTextBox
     });
 
-    $(document).on("click", "#more", function () {
+    $(document).on("click", "#more", function() {
         $(".buttons").remove();
+        $(".chatbox2").remove();
         $(".talk").append("<p class='user-answers'>One more</p>");
         scrollThatStuff();
         temps = 0;
-        doItLAter(theInspireQuotes, 0);
+        $(".talk").append(dotdot);
+        doItLAter(theInspireQuotes, 1000);
     });
 
     // ======= THE POST TEXT BOX BUTTONS
@@ -280,21 +321,21 @@ $(document).ready(function () {
         scrollThatStuff();
     }
 
-    $(document).on("click", "#seeyou", function () {
+    $(document).on("click", "#seeyou", function() {
         $(".buttons").remove();
         random(chatBotBye);
-        $(".talk").append("<p class='chat-answers'>" + selected + "</p>");
+        chatTalk();
         temps = 0;
         scrollThatStuff();
         // CLOSE THE APP SOMEHOW
     });
 
-    $(document).on("click", "#write", function () {
+    $(document).on("click", "#write", function() {
         $(".buttons").remove();
         $(".talk").append("<p class='user-answers'>I'll write more</p>");
-        setTimeout(function () {
+        setTimeout(function() {
             random(chatBotLetsWrite);
-            $(".talk").append("<p class='chat-answers'>" + selected + "</p>");
+            chatTalk();
             scrollThatStuff();
         }, 1000);
         temps = 0;
@@ -302,11 +343,11 @@ $(document).ready(function () {
         doItLAter(theTextBox, 1500);
     });
 
-    $(document).on("click", "#other", function () {
+    $(document).on("click", "#other", function() {
         $(".buttons").remove();
-        $(".talk").append("<p class='chat-answers'>What do you want to do?</p>");
+        chatTalk2("What do you want to do?", "chat");
         temps = 0;
-        setTimeout(function () {
+        setTimeout(function() {
             $(".talk").append("<div class='buttons'></div>");
             $(".buttons").append("<div class='butts' id='tags'><p>See my entries by tags</p></div>");
             $(".buttons").append("<div class='butts' id='inspireAction'><p>Show example of self help</p></div>");
@@ -316,38 +357,58 @@ $(document).ready(function () {
         scrollThatStuff();
     });
 
-    // ======= THE BUTTONS
-    function theButtons() {
-        $(".talk").append("<div class='buttons'></div>");
-        $(".buttons").append("<div class='butts' id='pos'><p>YES</p></div>");
-        $(".buttons").append("<div class='butts' id='neg'><p>Hell no!</p></div>");
-        scrollThatStuff();
-    }
 
-    $(document).on("click", "#pos", function () {
-        console.log("button clicked");
-        $(this).remove();
-        $(".buttons").remove();
-        $(".talk").append("<p class='user-answers'> Yes</p>");
-        temps = 0;
-        doItLAter(e, 2000);
-    });
 
-    $(document).on("click", "#neg", function () {
-        console.log("button clicked");
-        $(this).remove();
-        $(".buttons").remove();
-        $(".talk").append("<p class='user-answers'> NOPE</p>");
-        scrollThatStuff();
-        temps = 0;
-        doItLAter(theTextBox, 2000);
-    });
+    // // ======= THE BUTTONS
+    // function theButtons() {
+    //     $(".talk").append("<div class='buttons'></div>");
+    //     $(".buttons").append("<div class='butts' id='pos'><p>YES</p></div>");
+    //     $(".buttons").append("<div class='butts' id='neg'><p>Hell no!</p></div>");
+    //     scrollThatStuff();
+    // }
+    // // doItLAter(theButtons, 2000);
+
+    // $(document).on("click", "#pos", function() {
+    //     console.log("button clicked");
+    //     $(this).remove();
+    //     $(".buttons").remove();
+    //     $(".talk").append("<p class='user-answers'>Yes</p>");
+    //     temps = 0;
+    //     doItLAter(e, 2000);
+    // });
+
+    // $(document).on("click", "#neg", function() {
+    //     console.log("button clicked");
+    //     $(this).remove();
+    //     $(".buttons").remove();
+    //     $(".talk").append("<p class='user-answers'>Nope</p>");
+    //     scrollThatStuff();
+    //     temps = 0;
+    //     doItLAter(theTextBox, 2000);
+    // });
 
     // ====== OTHER THINGS
-    function d() {
-        random(chatBotOther);
-        $(".talk").append("<p class='chat-answers'>" + selected + "</p>");
-        scrollThatStuff();
+    // function d() {
+    //     random(chatBotOther);
+    //     chatTalk();
+    //     scrollThatStuff();
+    // }
+
+
+    //add method post for all user data
+    //when button saved prevents refreshing page and adds the value to message object,
+    //created ajax method that will do post on /comment
+    //sends message object val.
+    // on click #save
+
+
+
+    if (firstTime) {
+
+
+
+
+
     }
 
-});
+}); // end of doc ready
