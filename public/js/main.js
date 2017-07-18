@@ -68,6 +68,7 @@ $(document).ready(function () {
     // ======= THE TEXT BOX
 
     function theTextBox() {
+        $(".buttons").remove();
         $(".talk").append('<div class="st-form"> <textarea type="text" class="st-box" id="st" placeholder="Your positive self talk" name="st"></textarea></div><div class="buttons"><button class="btn btn-save" id="inspireAction">I don\'t know what to write</button><button type="submit" class="btn btn-save" id="save">Save</button></div>');
     }
 
@@ -91,10 +92,14 @@ $(document).ready(function () {
             },
             error: function (error) { console.log(error) }
         });
+        $(".talk").append("<p class='user-answers'>" + $("#st").val() + "</p>");
         $("#inspireAction").remove();
         $("#st").remove();
+        $(".st-form").remove();
         $(this).remove();
-        $(".talk").append("<p class='chat-answers'>It's saved!</p>");
+        setTimeout(function () {
+            $(".talk").append("<p class='chat-answers'>It's saved!</p>");
+        }, 1000);
         temps = 0;
         doItLAter(theAddTag, 2000);
     });
@@ -103,6 +108,7 @@ $(document).ready(function () {
     $(document).on("click", "#inspireAction", function () {
         $("#save").remove();
         $("#st").remove();
+        $(".st-form").remove();
         $(this).remove();
         $(".talk").append("<p class='user-answers'>I don\'t know what to write</p>");
         random(chatBotInspireMe);
@@ -137,14 +143,14 @@ $(document).ready(function () {
 
     $(document).on("click", "#tag1", function () {
         $(".buttons-tag").remove();
-        $(".talk").append("<p class='user-answers'>Tagged as THE TAG DYNAMICALLY GENERATED</p>");
+        $(".talk").append("<p class='user-answers'>We need to grab the name of the tag and put it here!</p>");
         temps = 0;
         doItLAter(thePostTextBoxButtons, 2000);
     });
 
     $(document).on("click", "#tag2", function () {
         $(".buttons-tag").remove();
-        $(".talk").append("<p class='user-answers'>Tagged as THE TAG DYNAMICALLY GENERATED</p>");
+        $(".talk").append("<p class='user-answers'>We need to grab the name of the tag and put it here!</p>");
         temps = 0;
         doItLAter(thePostTextBoxButtons, 2000);
     });
@@ -152,12 +158,20 @@ $(document).ready(function () {
     $(document).on("click", "#new", function () {
         $(".buttons-tag").remove();
         // WAY TO ADD A NEW TAG GOES HERE!!!!!
-        $(".talk").append('<input type="text" name="New tag" value="New tag"><button type="submit" class="btn btn-save" id="add">Add</button>');
+        $(".talk").append('<div id="input-container"><input type="text" name="new-tag" id="new-tag" placeholder="Your new tag"><button type="submit" class="btn btn-save" id="add">Add</button></div>');
         temps = 0;
     });
 
     $(document).on("click", "#add", function () {
         // ADDING THE NEWLY GENERATED TAG
+        $(".talk").append("<p class='user-answers'>" + $("#new-tag").val() + "</p>");
+        $(".buttons-tag").remove();
+        $("input").remove();
+        $("#add").remove();
+
+        setTimeout(function () {
+            $(".talk").append("<p class='chat-answers'>Your new tag has been saved.</p>");
+        }, 1000);
         // SAYING IT'S DONE
         doItLAter(thePostTextBoxButtons, 2000);
     });
@@ -186,6 +200,7 @@ $(document).ready(function () {
 
     // ======= THE POST TEXT BOX BUTTONS
     function thePostTextBoxButtons() {
+        $(".buttons").remove();
         $(".talk").append("<div class='buttons'></div>");
         $(".buttons").append("<div class='butts' id='seeyou'><p>See you</p></div>");
         $(".buttons").append("<div class='butts' id='other'><p>I want to do something else</p></div>");
