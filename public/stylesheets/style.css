@@ -303,9 +303,9 @@ input {
 
 /* ======================================== */
 
-@media only screen and (min-width: 768px) {
+@media only screen and (max-width: 768px) {
     html {
-        height: 100%;
+        height: 100vh;
     }
     .container2 {
         height: 100vh;
@@ -323,6 +323,7 @@ input {
     }
     .talk {
         overflow: scroll;
+        width: 90vw;
         /* flex-flow: column wrap; */
         display: flex;
         min-height: 90vh;
@@ -331,5 +332,9 @@ input {
         /* background: linear-gradient(135deg, rgba(215, 212, 248, 1) 0%, rgba(241, 219, 245, 1) 100%) no-repeat; */
         background-color: rgba(255, 255, 255, 0.4);
         padding: 20px;
+    }
+    .chat-answers,
+    .user-answers {
+        max-width: 80%;
     }
 }

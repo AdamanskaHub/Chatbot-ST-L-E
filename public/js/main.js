@@ -1,6 +1,7 @@
 // =========================== APP LOGIC ===========================
 
 var selected;
+let firstTime = false;
 
 function random(param) {
     selected = param[Math.floor(Math.random() * param.length)];
@@ -375,58 +376,139 @@ $(document).ready(function() {
         doItLAter(thePostTextBoxButtons, 1500);
     });
 
-
-
-    // // ======= THE BUTTONS
-    // function theButtons() {
-    //     $(".talk").append("<div class='buttons'></div>");
-    //     $(".buttons").append("<div class='butts' id='pos'><p>YES</p></div>");
-    //     $(".buttons").append("<div class='butts' id='neg'><p>Hell no!</p></div>");
-    //     scrollThatStuff();
-    // }
-    // // doItLAter(theButtons, 2000);
-
-    // $(document).on("click", "#pos", function() {
-    //     console.log("button clicked");
-    //     $(this).remove();
-    //     $(".buttons").remove();
-    //     $(".talk").append("<p class='user-answers'>Yes</p>");
-    //     temps = 0;
-    //     doItLAter(e, 2000);
-    // });
-
-    // $(document).on("click", "#neg", function() {
-    //     console.log("button clicked");
-    //     $(this).remove();
-    //     $(".buttons").remove();
-    //     $(".talk").append("<p class='user-answers'>Nope</p>");
-    //     scrollThatStuff();
-    //     temps = 0;
-    //     doItLAter(theTextBox, 2000);
-    // });
-
-    // ====== OTHER THINGS
-    // function d() {
-    //     random(chatBotOther);
-    //     chatTalk();
-    //     scrollThatStuff();
-    // }
-
-
-    //add method post for all user data
-    //when button saved prevents refreshing page and adds the value to message object,
-    //created ajax method that will do post on /comment
-    //sends message object val.
-    // on click #save
-
-
-
     if (firstTime) {
+        console.log("first time LAUNCHED)");
 
+        $(".talk").append(dotdot);
+        // ========== GREETING =============
+        function theFirstGreeting0() {
+            $(".chatbox2").remove();
+            $(".talk").append("<p class='chat-answers'>Hello there!</p>");
+            setTimeout(function() {
+                $(".talk").append(dotdot);
+                doItLAter(theFirstGreeting1, 2000);
+            }, 1000);
+        }
+        doItLAter(theFirstGreeting0, 2000);
 
-        console.log("first time ;)");
+        function theFirstGreeting1() {
+            $(".chatbox2").remove();
+            $(".talk").append("<p class='chat-answers'>It's great to see you.</p>");
+            setTimeout(function() {
+                $(".talk").append(dotdot);
+                doItLAter(theFirstGreeting2, 2000);
+            }, 1000);
+        }
+
+        function theFirstGreeting2() {
+            $(".chatbox2").remove();
+            $(".talk").append("<p class='chat-answers'>Let's develop positive self talk habits.</br> But before that, do you know what self talk is?</p>");
+            $(".buttons").append("<div class='butts btn-hover' id='iknow'><p>I know about it</p></div>");
+            $(".buttons").append("<div class='butts btn-hover' id='idont'><p>I dont, explain</p></div>");
+            scrollThatStuff();
+        }
+
+        $(document).on("click", "#idont", function() {
+            $(".buttons").remove();
+            $(".talk").append("<p class='user-answers'>I dont, explain</p>");
+            $(".talk").append(dotdot);
+            setTimeout(function() {
+                $(".talk").append("<p class='chat-answers'>Self-talk is basically your inner voice, the voice in your mind that says the things you don’t necessarily say out loud. We often don’t even realise that this running commentary is going on in the background, but our self-talk can have a big influence on how we feel about who we are.</p>");
+                $(".talk").append(dotdot);
+                scrollThatStuff();
+                setTimeout(function() {
+                    $(".chatbox2").remove();
+                    $(".talk").append("<p class='chat-answers'>For instance, when you thing 'I'm too lazy', you're doing negative self talk. It's harmful, especially if you repeat it often as you'll start believing it and it will define you.</br> On the contrary, if you often think 'I'm great at cooking', you will become even greater, somehow tricking your brain that will in turn make sure you are as great as you say. </p>");
+                    $(".talk").append(dotdot);
+                    scrollThatStuff();
+                }, 3000);
+            }, 3000);
+
+            temps = 0;
+            scrollThatStuff();
+            doItLAter(theNameGetting, 1500);
+        });
+
+        $(document).on("click", "#iknow", function() {
+            $(".buttons").remove();
+            $(".talk").append("<p class='user-answers'>I know about it</p>");
+            $(".talk").append(dotdot);
+            setTimeout(function() {
+                $(".chatbox2").remove();
+                $(".talk").append("<p class='chat-answers'>That's great.</p>");
+                scrollThatStuff();
+            }, 1000);
+            temps = 0;
+            scrollThatStuff();
+            doItLAter(theNameGetting, 1500);
+        });
+
+        function theNameGetting() {
+            $(".chatbox2").remove();
+            $(".talk").append("<p class='chat-answers'>Excellent, by the way, how are you called?</p>");
+            setTimeout(function() {
+                // $(".talk").append(dotdot);
+                scrollThatStuff();
+                doItLAter(theNameGrabbing, 2000);
+            }, 1000);
+        }
+
+        function theNameGrabbing() {
+            $(".chatbox2").remove();
+            $(".talk").append("<p class='chat-answers'>It's great to see you.</p>");
+            setTimeout(function() {
+                $(".talk").append('<div id="input-container"><input type="text" name="new-name" id="new-name" placeholder="How should I call you"><button type="submit" class="btn btn-save btn-hover" id="savename">Save</button></div>');
+                scrollThatStuff();
+            }, 1000);
+        }
+
+        // PRENDRE LE BOUTON SAVENAME ET AJOUTER
 
 
     }
 
 }); // end of doc ready
+
+
+
+// // ======= THE BUTTONS
+// function theButtons() {
+//     $(".talk").append("<div class='buttons'></div>");
+//     $(".buttons").append("<div class='butts' id='pos'><p>YES</p></div>");
+//     $(".buttons").append("<div class='butts' id='neg'><p>Hell no!</p></div>");
+//     scrollThatStuff();
+// }
+// // doItLAter(theButtons, 2000);
+
+// $(document).on("click", "#pos", function() {
+//     console.log("button clicked");
+//     $(this).remove();
+//     $(".buttons").remove();
+//     $(".talk").append("<p class='user-answers'>Yes</p>");
+//     temps = 0;
+//     doItLAter(e, 2000);
+// });
+
+// $(document).on("click", "#neg", function() {
+//     console.log("button clicked");
+//     $(this).remove();
+//     $(".buttons").remove();
+//     $(".talk").append("<p class='user-answers'>Nope</p>");
+//     scrollThatStuff();
+//     temps = 0;
+//     doItLAter(theTextBox, 2000);
+// });
+
+// ====== OTHER THINGS
+// function d() {
+//     random(chatBotOther);
+//     chatTalk();
+//     scrollThatStuff();
+// }
+
+
+//add method post for all user data
+//when button saved prevents refreshing page and adds the value to message object,
+//created ajax method that will do post on /comment
+//sends message object val.
+// on click #save
