@@ -165,6 +165,25 @@ a:hover {
     flex-shrink: 0;
 }
 
+.btn-save:hover,
+.btn-save:focused,
+.btn-save:active,
+.btn:hover,
+.btn:focused,
+.btn:active,
+.butts:hover,
+.butts:focused,
+.butts:active,
+#save:hover,
+#save:focused,
+#save:active,
+#inspireAction:hover,
+#inspireAction:focused,
+#inspireAction:active {
+    background-color: #8659de;
+    color: #fff;
+}
+
 .chatbox,
 .chatbox2 {
     display: flex;
