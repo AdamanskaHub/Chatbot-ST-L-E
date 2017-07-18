@@ -21,7 +21,7 @@ function scrollThatStuff() {
         scrollTop: $('.talk').get(0).scrollHeight
     }, 2000);
 }
-//chatbot call
+//chatbot calls
 let chatBotGreetings;
 let chatBotMessage;
 let chatBotOther;
@@ -30,6 +30,9 @@ let chatBotInspireMe;
 let chatBotInspireQuotes;
 let chatBotwhichTag;
 let chatBotPositive;
+//user calls
+let userQuotes;
+let userTags;
 
 $.ajax({
     //get the route from route index.js chatbot
@@ -47,6 +50,32 @@ $.ajax({
     },
     error: function (error) { console.log(error); }
 });
+
+
+$.ajax({
+    //get the route from route index.js chatbot
+    url: "http://localhost:7777/user",
+    type: "get",
+    success: function (response) {
+        console.log('FRONT', response.userPrint.selfTalkMessages);
+        userQuotes = response.userPrint.selfTalkMessages;
+        userQuotes.forEach((quote)=>{
+            if (quote.tag === "marc") {
+                console.log("THIS IS THE MESSAGE", quote.message)
+            }
+        })
+        // chatBotGreetings = response.bot[0].greeting;
+        // chatBotMessage = response.bot[0].message;
+        // chatBotOther = response.bot[0].otherThings;
+        // chatBotLetsWrite = response.bot[0].letsWrite;
+        // chatBotInspireMe = response.bot[0].inspireMe;
+        // chatBotInspireQuotes = response.bot[0].inspireQuotes;
+        // chatBotwhichTag = response.bot[0].whichTag;
+        // chatBotPositive = response.bot[0].positiveM;
+    },
+    error: function (error) { console.log(error); }
+});
+
 
 // =========================== DISPLAY THE TEXT ===========================
 
@@ -87,10 +116,7 @@ $(document).ready(function () {
     //======== ON CLICK SAVE TEXTAREA 
     $(document).on("click", "#save", function (e) {
         e.preventDefault();
-        message = {
-            text: $("#st").val(),
-            date: new Date()
-        };
+        message = $("#st").val();
         console.log("MESSAGE", message);
         
         $(".talk").append("<p class='user-answers'>" + $("#st").val() + "</p>");
@@ -192,14 +218,14 @@ $(document).ready(function () {
 
         e.preventDefault();
         //adding to message array the tag.
-        message.tag = $("#new-tag").val(),
 
-            console.log("MESSAGE", message);
 
         $.ajax({
             url: "http://localhost:7777/comment",
             type: "POST",
-            data: { message },
+            data: { message: message,
+                    tag: $("#new-tag").val(),
+                    date: new Date() },
             success: function (response) {
                 console.log(response);
             },
