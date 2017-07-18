@@ -29,15 +29,10 @@ function scrollThatStuff() {
         scrollTop: $('.talk').get(0).scrollHeight
     }, 2000);
 }
-<<<<<<< HEAD
-//chatbot calls
-=======
-
 
 let dotdot = "<div class='chatbox2'><img src='../img/tinyhead.png'><div class='threedotloader'><div class='dot'></div><div class='dot'></div><div class='dot'></div></div></div>";
 
 //chatbot call
->>>>>>> 327756d46d3633b5db9fb3ac2b01d82cd643f4d0
 let chatBotGreetings;
 let chatBotMessage;
 let chatBotOther;
@@ -255,15 +250,10 @@ $(document).ready(function() {
         $.ajax({
             url: "http://localhost:7777/comment",
             type: "POST",
-<<<<<<< HEAD
             data: { message: message,
                     tag: $("#new-tag").val(),
                     date: new Date() },
             success: function (response) {
-=======
-            data: { message },
-            success: function(response) {
->>>>>>> 327756d46d3633b5db9fb3ac2b01d82cd643f4d0
                 console.log(response);
             },
             error: function(error) { console.log(error) }
