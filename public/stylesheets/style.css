@@ -165,6 +165,11 @@ a:hover {
     flex-shrink: 0;
 }
 
+.btn-hover:hover {
+    background: #7449bd!important;
+    color: #fff!important;
+}
+
 .chatbox,
 .chatbox2 {
     display: flex;
@@ -292,5 +297,39 @@ input {
     }
     100% {
         transform: scale(0);
+    }
+}
+
+
+/* ======================================== */
+
+@media only screen and (min-width: 768px) {
+    html {
+        height: 100%;
+    }
+    .container2 {
+        height: 100vh;
+    }
+    .talk-box {
+        height: 95vh;
+        display: flex;
+        justify-content: center;
+        margin-top: 3vh;
+    }
+    .bottom-box {
+        height: 100vh;
+        margin-top: 0px;
+        padding-top: 0px;
+    }
+    .talk {
+        overflow: scroll;
+        /* flex-flow: column wrap; */
+        display: flex;
+        min-height: 90vh;
+        align-items: baseline;
+        flex-direction: column;
+        /* background: linear-gradient(135deg, rgba(215, 212, 248, 1) 0%, rgba(241, 219, 245, 1) 100%) no-repeat; */
+        background-color: rgba(255, 255, 255, 0.4);
+        padding: 20px;
     }
 }
