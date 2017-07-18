@@ -83,7 +83,6 @@ $(document).ready(function() {
 
     // ======= LETS WRITE
     function theLetsWrite() {
-        console.log("Are we getting to let's write");
         $(".talk").append(dotdot);
         setTimeout(function() {
             $(".chatbox2").remove();
@@ -152,7 +151,7 @@ $(document).ready(function() {
         $(".st-form").remove();
         $(this).remove();
         $(".chatbox2").remove();
-        $(".talk").append("<p class='user-answers'>I don't know what to write</p>");
+        $(".talk").append("<p class='user-answers'>I don't know what to write, help me</p>");
         scrollThatStuff();
         $(".talk").append(dotdot);
         setTimeout(function() {
@@ -169,7 +168,6 @@ $(document).ready(function() {
 
     // ======= INSPIRE QUOTE
     function theInspireQuotes() {
-        console.log("we get to inspire quote");
         $(".chatbox2").remove();
         random(chatBotInspireQuotes);
         chatTalk();
@@ -197,18 +195,7 @@ $(document).ready(function() {
         $(".talk").append("<p class='user-answers'>We need to grab the name of the tag and put it here!</p>");
         scrollThatStuff();
         random(chatBotPositive);
-        $(".talk").append("<p class='chat-answers'>" + selected + "</p>");
-        scrollThatStuff();
-        temps = 0;
-        doItLAter(thePostTextBoxButtons, 2000);
-    });
-
-    $(document).on("click", "#tag2", function() {
-        $(".buttons-tag").remove();
-        $(".talk").append("<p class='user-answers'>We need to grab the name of the tag and put it here!</p>");
-        scrollThatStuff();
-        random(chatBotPositive);
-        $(".talk").append("<p class='chat-answers'>" + selected + "</p>");
+        chatTalk();
         scrollThatStuff();
         temps = 0;
         doItLAter(thePostTextBoxButtons, 2000);
@@ -274,18 +261,19 @@ $(document).ready(function() {
         $(".talk").append("<p class='user-answers'>I'm ready to write</p>");
         temps = 0;
         scrollThatStuff();
-        $(".talk").append(dotdot);
+        // $(".talk").append(dotdot);
         doItLAter(theLetsWrite, 2000);
         // Or it0s theTextBox
     });
 
     $(document).on("click", "#more", function() {
         $(".buttons").remove();
+        $(".chatbox2").remove();
         $(".talk").append("<p class='user-answers'>One more</p>");
         scrollThatStuff();
         temps = 0;
         $(".talk").append(dotdot);
-        doItLAter(theInspireQuotes, 0);
+        doItLAter(theInspireQuotes, 1000);
     });
 
     // ======= THE POST TEXT BOX BUTTONS
@@ -379,5 +367,13 @@ $(document).ready(function() {
     // on click #save
 
 
+
+    if (firstTime) {
+
+
+
+
+
+    }
 
 }); // end of doc ready

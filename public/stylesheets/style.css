@@ -168,6 +168,7 @@ a:hover {
 .chatbox,
 .chatbox2 {
     display: flex;
+    flex-shrink: 0;
 }
 
 .chatbox>img,
