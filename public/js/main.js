@@ -11,7 +11,7 @@ var temps = 0;
 function doItLAter(fct, time) {
     temps += time;
     console.log(temps);
-    setTimeout(function () {
+    setTimeout(function() {
         fct();
     }, temps);
 }
@@ -28,7 +28,7 @@ $.ajax({
     //get the route from route index.js chatbot
     url: "http://localhost:7777/chatbot",
     type: "get",
-    success: function (response) {
+    success: function(response) {
         chatBotGreetings = response.bot[0].greeting;
         chatBotMessage = response.bot[0].message;
         chatBotOther = response.bot[0].otherThings;
@@ -42,14 +42,13 @@ $.ajax({
 
 // =========================== DISPLAY THE TEXT ===========================
 
-$(document).ready(function () {
+$(document).ready(function() {
 
-
-    $("#self").click(function (event) {
+    $("#self").click(function(event) {
         console.log('form');
         event.preventDefault();
     });
-    function a() {
+
     // ========== GREETING
     function theGreeting() {
         random(chatBotGreetings);
@@ -207,7 +206,7 @@ $(document).ready(function () {
     }
     // doItLAter(theButtons, 2000);
 
-    $(document).on("click", "#pos", function () {
+    $(document).on("click", "#pos", function() {
         console.log("button clicked");
         $(this).remove();
         $(".buttons").remove();
@@ -230,7 +229,6 @@ $(document).ready(function () {
         random(chatBotOther);
         $(".talk").append("<p class='chat-answers'>" + selected + "</p>");
     }
-    //doItLAter(d, 2000);
 
     function e() {
         //add method post for all user data
@@ -238,33 +236,28 @@ $(document).ready(function () {
         //when button saved prevents refreshing page and adds the value to message object,
         //created ajax method that will do post on /comment
         //sends message object val.
-        $(".btn-save").click(function (e) {
+        $(".btn-save").click(function(e) {
             e.preventDefault();
-            e.stopPropagation()
+            e.stopPropagation();
             var message = {
                 text: $("#selfTalk").val(),
                 tag: "TEST-TAG",
                 date: Date
-            }
+            };
             console.log("MESSAGE", message);
             $.ajax({
                 //get the route from route index.js chatbot
                 url: "http://localhost:7777/comment",
                 type: "POST",
                 data: { message },
-                success: function (response) {
+                success: function(response) {
                     //remove text area add text
                     $("#selfTalk").val("");
                     console.log(response);
                 },
-                error: function (error) { console.log(error) }
+                error: function(error) { console.log(error) }
             });
-        })
+        });
     }
-
-
-
-
-
 
 });
