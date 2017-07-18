@@ -125,14 +125,14 @@ $(document).ready(function() {
 
     $(document).on("click", "#tag1", function() {
         $(".buttons-tag").remove();
-        $(".talk").append("<p class='user-answers'>Tagged as THE TAG DYNAMICALLY GENERATED</p>");
+        $(".talk").append("<p class='user-answers'>We need to grab the name of the tag and put it here!</p>");
         temps = 0;
         doItLAter(thePostTextBoxButtons, 2000);
     });
 
     $(document).on("click", "#tag2", function() {
         $(".buttons-tag").remove();
-        $(".talk").append("<p class='user-answers'>Tagged as THE TAG DYNAMICALLY GENERATED</p>");
+        $(".talk").append("<p class='user-answers'>We need to grab the name of the tag and put it here!</p>");
         temps = 0;
         doItLAter(thePostTextBoxButtons, 2000);
     });
@@ -146,10 +146,14 @@ $(document).ready(function() {
 
     $(document).on("click", "#add", function() {
         // ADDING THE NEWLY GENERATED TAG
+        $(".talk").append("<p class='user-answers'>" + $("#new-tag").val() + "</p>");
         $(".buttons-tag").remove();
         $("input").remove();
         $("#add").remove();
-        $(".talk").append("<p class='chat-answers'>Your new tag has been saved.</p>");
+
+        setTimeout(function() {
+            $(".talk").append("<p class='chat-answers'>Your new tag has been saved.</p>");
+        }, 1000);
         // SAYING IT'S DONE
         doItLAter(thePostTextBoxButtons, 2000);
     });
