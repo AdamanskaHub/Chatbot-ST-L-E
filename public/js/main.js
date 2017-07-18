@@ -99,7 +99,7 @@ $(document).ready(function() {
 
     function theTextBox() {
         $(".buttons").remove();
-        $(".talk").append('<div class="st-form"> <textarea type="text" class="st-box" id="st" placeholder="Your positive self talk" name="st"></textarea></div><div class="buttons"><button class="btn btn-save" id="inspireAction">I don\'t know what to write</button><button type="submit" class="btn btn-save" id="save">Save</button></div>');
+        $(".talk").append('<div class="st-form"> <textarea type="text" class="st-box" id="st" placeholder="Your positive self talk" name="st"></textarea></div><div class="buttons"><button class="btn btn-save btn-hover" id="inspireAction">I don\'t know what to write</button><button type="submit" class="btn btn-save btn-hover" id="save">Save</button></div>');
         // AUTO SCROLL FOR CHAT
         scrollThatStuff();
     }
@@ -182,8 +182,8 @@ $(document).ready(function() {
         chatTalk();
         setTimeout(function() {
             $(".talk").append("<div class='buttons-tag'></div>");
-            $(".buttons-tag").append("<div class='butts tags' id='tag1'><p>Tag1</p></div>");
-            $(".buttons-tag").append("<div class='butts tags' id='new'><p>Add a new tag</p></div>");
+            $(".buttons-tag").append("<div class='butts tags btn-hover' id='tag1'><p>Tag1</p></div>");
+            $(".buttons-tag").append("<div class='butts tags btn-hover' id='new'><p>Add a new tag</p></div>");
             scrollThatStuff();
         }, 1000);
         scrollThatStuff();
@@ -205,7 +205,7 @@ $(document).ready(function() {
         console.log("in new tag button", message)
         $(".buttons-tag").remove();
         // WAY TO ADD A NEW TAG GOES HERE!!!!!
-        $(".talk").append('<div id="input-container"><input type="text" name="new-tag" id="new-tag" placeholder="Your new tag"><button type="submit" class="btn btn-save" id="add">Add</button></div>');
+        $(".talk").append('<div id="input-container"><input type="text" name="new-tag" id="new-tag" placeholder="Your new tag"><button type="submit" class="btn btn-save btn-hover" id="add">Add</button></div>');
         scrollThatStuff();
         temps = 0;
     });
@@ -251,8 +251,8 @@ $(document).ready(function() {
     // ======= THE ONE MORE BUTTONS
     function theMoreButtons() {
         $(".talk").append("<div class='buttons'></div>");
-        $(".buttons").append("<div class='butts' id='more'><p>One more</p></div>");
-        $(".buttons").append("<div class='butts' id='ready'><p>I'm ready to write</p></div>");
+        $(".buttons").append("<div class='butts btn-hover' id='more'><p>One more</p></div>");
+        $(".buttons").append("<div class='butts btn-hover' id='ready'><p>I'm ready to write</p></div>");
         scrollThatStuff();
     }
 
@@ -280,9 +280,9 @@ $(document).ready(function() {
     function thePostTextBoxButtons() {
         $(".buttons").remove();
         $(".talk").append("<div class='buttons'></div>");
-        $(".buttons").append("<div class='butts' id='seeyou'><p>See you</p></div>");
-        $(".buttons").append("<div class='butts' id='other'><p>I want to do something else</p></div>");
-        $(".buttons").append("<div class='butts' id='write'><p>I'll write more</p></div>");
+        $(".buttons").append("<div class='butts btn-hover' id='seeyou'><p>See you</p></div>");
+        $(".buttons").append("<div class='butts btn-hover' id='other'><p>I want to do something else</p></div>");
+        $(".buttons").append("<div class='butts btn-hover' id='write'><p>I'll write more</p></div>");
         scrollThatStuff();
     }
 
@@ -314,9 +314,9 @@ $(document).ready(function() {
         temps = 0;
         setTimeout(function() {
             $(".talk").append("<div class='buttons'></div>");
-            $(".buttons").append("<div class='butts' id='tags'><p>See my entries by tags</p></div>");
-            $(".buttons").append("<div class='butts' id='inspireAction'><p>Show example of self help</p></div>");
-            $(".buttons").append("<div class='butts' id='write'><p>I'll write more</p></div>");
+            $(".buttons").append("<div class='butts btn-hover' id='tags'><p>See my entries by tags</p></div>");
+            $(".buttons").append("<div class='butts btn-hover' id='inspireAction'><p>Show example of self help</p></div>");
+            $(".buttons").append("<div class='butts btn-hover' id='write'><p>I'll write more</p></div>");
             scrollThatStuff();
         }, 1000);
         scrollThatStuff();
@@ -371,7 +371,7 @@ $(document).ready(function() {
     if (firstTime) {
 
 
-
+        console.log("first time ;)");
 
 
     }
