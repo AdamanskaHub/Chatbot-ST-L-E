@@ -8,6 +8,9 @@ const User = require('../models/user');
 router.get('/', function (req, res, next) {
   res.render('index', { title: 'The fucking awesome Chatbot' });
 });
+
+
+
 //go to this route
 router.get('/chatbot', function (req, res, next) {
   //get all info from chatbot collection, finds and prints all info
@@ -21,12 +24,17 @@ router.get('/chatbot', function (req, res, next) {
 
 router.get('/user', function (req, res, next) {
   //get all info from chatbot collection, finds and prints all info
-  user.find({}, (err, userInfo) => {
-    if (err) { return next(err) }
-    console.log('chatbotFrase');
-    //data transformed to json
-    res.json({ userInfo })
-  })
+  let userLogged = req.session.passport.user._id
+  User.findById({ _id: userLogged }, (err, userPrint) => {
+    console.log('finds user by id');
+    if (err) {
+      console.log("there is an error")
+      next(err);
+    }
+    console.log("OBJECT",userPrint);
+    
+    res.json({ userPrint })
+  });
 });
 
 router.get('/secret', auth.checkLoggedIn('You must be login', '/login'), function (req, res, next) {
@@ -37,8 +45,6 @@ router.get('/admin', auth.checkLoggedIn('You must be login', '/login'), auth.che
   // console.log(req.user);
   res.render('admin', { user: JSON.stringify(req.user) });
 });
-
-
 
 router.post("/comment", (req, res, next) => {
 
@@ -58,5 +64,7 @@ router.post("/comment", (req, res, next) => {
     }
   });
 });
+
+
 
 module.exports = router;
