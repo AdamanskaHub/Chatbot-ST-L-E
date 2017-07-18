@@ -44,6 +44,8 @@ $.ajax({
 
 $(document).ready(function () {
 
+    var message = "initial value";
+
     $("#self").click(function (event) {
         console.log('form');
         event.preventDefault();
@@ -71,27 +73,15 @@ $(document).ready(function () {
         $(".buttons").remove();
         $(".talk").append('<div class="st-form"> <textarea type="text" class="st-box" id="st" placeholder="Your positive self talk" name="st"></textarea></div><div class="buttons"><button class="btn btn-save" id="inspireAction">I don\'t know what to write</button><button type="submit" class="btn btn-save" id="save">Save</button></div>');
     }
-
-    //======== ON CLICK SAVE 
+    //======== ON CLICK SAVE TEXTAREA 
     $(document).on("click", "#save", function (e) {
         e.preventDefault();
-        e.stopPropagation();
-        var message = {
+        message = {
             text: $("#st").val(),
-            tag: "TEST-TAG",
-            date: Date
+            date: new Date()
         };
         console.log("MESSAGE", message);
-        $.ajax({
-            //get the route from route index.js chatbot
-            url: "http://localhost:7777/comment",
-            type: "POST",
-            data: { message },
-            success: function (response) {
-                console.log(response);
-            },
-            error: function (error) { console.log(error) }
-        });
+        
         $(".talk").append("<p class='user-answers'>" + $("#st").val() + "</p>");
         $("#inspireAction").remove();
         $("#st").remove();
@@ -102,8 +92,8 @@ $(document).ready(function () {
         }, 1000);
         temps = 0;
         doItLAter(theAddTag, 2000);
+       
     });
-
 
     $(document).on("click", "#inspireAction", function () {
         $("#save").remove();
@@ -129,6 +119,7 @@ $(document).ready(function () {
 
     // ======= THE ADD TAG
     function theAddTag() {
+        console.log("add tag", message)
         random(chatBotwhichTag);
         $(".talk").append("<p class='chat-answers'>" + selected + "</p>");
         setTimeout(function () {
@@ -137,9 +128,10 @@ $(document).ready(function () {
             $(".buttons-tag").append("<div class='butts tags' id='tag2'><p>tag2</p></div>");
             $(".buttons-tag").append("<div class='butts tags' id='new'><p>Add a new tag</p></div>");
         }, 1000);
-
+        
         // IF NUMBER OF TAGS > 6 ===> fuck this no add
     }
+
 
     $(document).on("click", "#tag1", function () {
         $(".buttons-tag").remove();
@@ -156,13 +148,31 @@ $(document).ready(function () {
     });
 
     $(document).on("click", "#new", function () {
+        console.log("in new tag button", message)
         $(".buttons-tag").remove();
         // WAY TO ADD A NEW TAG GOES HERE!!!!!
         $(".talk").append('<div id="input-container"><input type="text" name="new-tag" id="new-tag" placeholder="Your new tag"><button type="submit" class="btn btn-save" id="add">Add</button></div>');
         temps = 0;
     });
+    //======== ON CLICK ADD NEW TAG AJAX CALL
+    $(document).on("click", "#add", function (e) {
+        console.log('MESSAGE AGAIN', message);
+        
+        e.preventDefault();
+        //adding to message array the tag.
+        message.tag = $("#new-tag").val(),
+ 
+        console.log("MESSAGE", message);
 
-    $(document).on("click", "#add", function () {
+        $.ajax({
+            url: "http://localhost:7777/comment",
+            type: "POST",
+            data: { message },
+            success: function (response) {
+                console.log(response);
+            },
+            error: function (error) { console.log(error) }
+        });
         // ADDING THE NEWLY GENERATED TAG
         $(".talk").append("<p class='user-answers'>" + $("#new-tag").val() + "</p>");
         $(".buttons-tag").remove();
@@ -173,8 +183,23 @@ $(document).ready(function () {
             $(".talk").append("<p class='chat-answers'>Your new tag has been saved.</p>");
         }, 1000);
         // SAYING IT'S DONE
-        doItLAter(thePostTextBoxButtons, 2000);
+        doItLAter(thePostTextBoxButtons, 2000); 
     });
+
+
+    // $(document).on("click", "#add", function () {
+    //     // ADDING THE NEWLY GENERATED TAG
+    //     $(".talk").append("<p class='user-answers'>" + $("#new-tag").val() + "</p>");
+    //     $(".buttons-tag").remove();
+    //     $("input").remove();
+    //     $("#add").remove();
+
+    //     setTimeout(function () {
+    //         $(".talk").append("<p class='chat-answers'>Your new tag has been saved.</p>");
+    //     }, 1000);
+    //     // SAYING IT'S DONE
+    //     doItLAter(thePostTextBoxButtons, 2000);
+    // });
 
 
     // ======= THE ONE MORE BUTTONS
