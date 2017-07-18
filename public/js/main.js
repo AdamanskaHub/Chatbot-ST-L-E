@@ -323,6 +323,59 @@ $(document).ready(function() {
     });
 
 
+    // ======== TAGS SELECTION ============
+    $(document).on("click", "#tags", function() {
+        $(".buttons").remove();
+        $(".talk").append("<p class='user-answers'>I want to see my entries by tags</p>");
+        setTimeout(function() {
+            chatTalk2("Choose the one you want to see", "chat");
+            scrollThatStuff();
+        }, 1000);
+        temps = 0;
+        scrollThatStuff();
+        doItLAter(theTagsButtons, 1500);
+    });
+
+    function theTagsButtons() {
+        $(".talk").append("<div class='buttons'></div>");
+        $(".buttons").append("<div class='butts btn-hover' id='tag1'><p>Random tag</p></div>");
+        $(".buttons").append("<div class='butts btn-hover' id='tag2'><p>random tag</p></div>");
+        $(".buttons").append("<div class='butts btn-hover' id='forget'><p>Forget that</p></div>");
+        scrollThatStuff();
+    }
+
+    // ======== TAGS DISPLAY ============
+
+    // HERE I'M GRABBING BY ID THAT NEED TO BE DYNAMICALLY GENERATED
+    $(document).on("click", "#tag1", function() {
+        $(".buttons").remove();
+        $(".talk").append("<p class='user-answers'>tag1</p>");
+        //setTimeout(function() {
+
+        chatTalk2("!!!!!!!!!!! HERE GOES THE TAG LIST !!!!!!!!!!!", "chat");
+        scrollThatStuff();
+        //}, 1000);
+        //temps = 0;
+        scrollThatStuff();
+        doItLAter(thePostTextBoxButtons, 1500);
+    });
+
+    // ======== TAGS Cancel ============
+    $(document).on("click", "#tag1", function() {
+        $(".buttons").remove();
+        $(".talk").append("<p class='user-answers'>Forget that</p>");
+        $(".talk").append(dotdot);
+        setTimeout(function() {
+            $(".chatbox2").remove();
+            chatTalk2("Ok", "chat");
+            scrollThatStuff();
+        }, 1000);
+        temps = 0;
+        scrollThatStuff();
+        doItLAter(thePostTextBoxButtons, 1500);
+    });
+
+
 
     // // ======= THE BUTTONS
     // function theButtons() {
