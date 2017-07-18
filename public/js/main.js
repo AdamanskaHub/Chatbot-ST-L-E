@@ -29,7 +29,7 @@ let chatBotLetsWrite;
 let chatBotInspireMe;
 let chatBotInspireQuotes;
 let chatBotwhichTag;
-let chatBotPos;
+let chatBotPositive;
 
 $.ajax({
     //get the route from route index.js chatbot
@@ -43,7 +43,7 @@ $.ajax({
         chatBotInspireMe = response.bot[0].inspireMe;
         chatBotInspireQuotes = response.bot[0].inspireQuotes;
         chatBotwhichTag = response.bot[0].whichTag;
-        chatBotPos = response.bot[0].posMessage;
+        chatBotPositive = response.bot[0].positiveM;
     },
     error: function(error) { console.log(error); }
 });
@@ -163,7 +163,7 @@ $(document).ready(function() {
         $(".buttons-tag").remove();
         $(".talk").append("<p class='user-answers'>We need to grab the name of the tag and put it here!</p>");
         scrollThatStuff();
-        random(chatBotPos);
+        random(chatBotPositive);
         $(".talk").append("<p class='chat-answers'>" + selected + "</p>");
         scrollThatStuff();
         temps = 0;
@@ -174,7 +174,7 @@ $(document).ready(function() {
         $(".buttons-tag").remove();
         $(".talk").append("<p class='user-answers'>We need to grab the name of the tag and put it here!</p>");
         scrollThatStuff();
-        random(chatBotPos);
+        random(chatBotPositive);
         $(".talk").append("<p class='chat-answers'>" + selected + "</p>");
         scrollThatStuff();
         temps = 0;

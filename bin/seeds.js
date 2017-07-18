@@ -17,10 +17,6 @@ const bot = new chatBot({
         "Think about positive self talk that you currently need, then write it.",
         "What do you want to write today?"
     ],
-    posMessage: ["Awesome, you're on the right path.",
-        "Great self talk.",
-        "Improving step by step."
-    ],
     whichTag: ["Now we just need a tag.",
         "Adding the tag and we're done.",
         "What's the tag for this entry?"
@@ -46,15 +42,23 @@ const bot = new chatBot({
         '"I like challenges and meet them head on."',
         '"I never allow the word "no" to stop me"',
         '"I live in the present moment"'
+    ],
+    posMessage: ["Awesome, you're on the right path.",
+        "Great self talk.",
+        "Improving step by step."
+    ],
+    positiveM: ["Awesome, you're on the right path.",
+        "Great self talk.",
+        "Improving step by step."
     ]
 
 });
 
-chatBot.create(bot, (err, chatBot) => {
+chatBot.create(bot, (err, chatbot) => {
     if (err) {
         throw err;
     }
-    console.log(chatBot);
+    console.log(chatbot);
     mongoose.connection.close();
 })
 

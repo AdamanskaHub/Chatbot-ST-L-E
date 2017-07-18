@@ -71,9 +71,26 @@ a:hover {
     background-color: rgba(0, 0, 0, 0.4);
     width: 100vw;
     height: 20vh;
-    /* HACK */
-    /* padding: 20px 0 30px 70px;
-    margin-left: -70px; */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-box>h1 {
+    font-family: 'Alegreya Sans', sans-serif;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+
+.top-box>p {
+    font-family: 'Handlee', cursive;
+    font-size: 1.3em;
+}
+
+#logout {
+    align-self: flex-end;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1em;
 }
 
 
