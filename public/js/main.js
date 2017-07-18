@@ -92,7 +92,7 @@ $(document).ready(function () {
             date: new Date()
         };
         console.log("MESSAGE", message);
-      
+        
         $(".talk").append("<p class='user-answers'>" + $("#st").val() + "</p>");
         $("#inspireAction").remove();
         $("#st").remove();
