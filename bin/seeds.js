@@ -58,11 +58,4 @@ chatBot.create(bot, (err, chatBot) => {
         mongoose.connection.close();
     })
 
-user.create(userInfo, (err, userInfo) => {
-        if (err) {
-            throw err;
-        }
-        console.log(userInfo);
-        mongoose.connection.close();
-    })
-    //grabing info from models and insert them to the database
+//grabing info from models and insert them to the database
