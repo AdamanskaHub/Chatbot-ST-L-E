@@ -53,6 +53,7 @@ router.post("/comment", (req, res, next) => {
   User.findByIdAndUpdate({ _id: userLogged }, { $push: { selfTalkMessages: message } }, (err) => {
     console.log('finds user by id and updates');
     if (err) {
+      console.log("there is an error")
       next(err);
     }
   });

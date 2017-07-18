@@ -64,6 +64,8 @@ $.ajax({
 
 $(document).ready(function() {
 
+    var message = "initial value";
+
     $("#self").click(function(event) {
         console.log('form');
         event.preventDefault();
@@ -107,11 +109,9 @@ $(document).ready(function() {
     $(document).on("click", "#save", function(e) {
 
         e.preventDefault();
-        e.stopPropagation();
-        var message = {
+        message = {
             text: $("#st").val(),
-            tag: "TEST-TAG",
-            date: Date
+            date: new Date()
         };
         console.log("MESSAGE", message);
         $.ajax({
@@ -141,6 +141,7 @@ $(document).ready(function() {
         }, 1000);
         temps = 0;
         doItLAter(theAddTag, 2000);
+
     });
 
 
@@ -196,13 +197,25 @@ $(document).ready(function() {
         $(".talk").append("<p class='user-answers'>We need to grab the name of the tag and put it here!</p>");
         scrollThatStuff();
         random(chatBotPositive);
-        chatTalk();
+        $(".talk").append("<p class='chat-answers'>" + selected + "</p>");
+        scrollThatStuff();
+        temps = 0;
+        doItLAter(thePostTextBoxButtons, 2000);
+    });
+
+    $(document).on("click", "#tag2", function() {
+        $(".buttons-tag").remove();
+        $(".talk").append("<p class='user-answers'>We need to grab the name of the tag and put it here!</p>");
+        scrollThatStuff();
+        random(chatBotPositive);
+        $(".talk").append("<p class='chat-answers'>" + selected + "</p>");
         scrollThatStuff();
         temps = 0;
         doItLAter(thePostTextBoxButtons, 2000);
     });
 
     $(document).on("click", "#new", function() {
+        console.log("in new tag button", message)
         $(".buttons-tag").remove();
         // WAY TO ADD A NEW TAG GOES HERE!!!!!
         $(".talk").append('<div id="input-container"><input type="text" name="new-tag" id="new-tag" placeholder="Your new tag"><button type="submit" class="btn btn-save" id="add">Add</button></div>');
@@ -210,7 +223,29 @@ $(document).ready(function() {
         temps = 0;
     });
 
-    $(document).on("click", "#add", function() {
+    //======== ON CLICK ADD NEW TAG AJAX CALL
+    $(document).on("click", "#add", function(e) {
+        //add method post for all user data
+        //when button saved prevents refreshing page and adds the value to message object,
+        //created ajax method that will do post on /comment
+        //sends message object val.
+        console.log('MESSAGE AGAIN', message);
+
+        e.preventDefault();
+        //adding to message array the tag.
+        message.tag = $("#new-tag").val(),
+
+            console.log("MESSAGE", message);
+
+        $.ajax({
+            url: "http://localhost:7777/comment",
+            type: "POST",
+            data: { message },
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(error) { console.log(error) }
+        });
         // ADDING THE NEWLY GENERATED TAG
         $(".talk").append("<p class='user-answers'>" + $("#new-tag").val() + "</p>");
         $(".buttons-tag").remove();
@@ -225,7 +260,6 @@ $(document).ready(function() {
         scrollThatStuff();
         doItLAter(thePostTextBoxButtons, 2000);
     });
-
 
     // ======= THE ONE MORE BUTTONS
     function theMoreButtons() {
