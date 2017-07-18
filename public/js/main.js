@@ -68,15 +68,21 @@ $(document).ready(function() {
     // ======= THE TEXT BOX
 
     function theTextBox() {
+        $(".buttons").remove();
         $(".talk").append('<div class="st-form"> <textarea type="text" class="st-box" id="st" placeholder="Your positive self talk" name="st"></textarea></div><div class="buttons"><button class="btn btn-save" id="inspireAction">I don\'t know what to write</button><button type="submit" class="btn btn-save" id="save">Save</button></div>');
     }
 
     $(document).on("click", "#save", function() {
         console.log($("#st").val());
+        $(".talk").append("<p class='user-answers'>" + $("#st").val() + "</p>");
         $("#inspireAction").remove();
         $("#st").remove();
+        $(".st-form").remove();
         $(this).remove();
-        $(".talk").append("<p class='chat-answers'>It's saved!</p>");
+
+        setTimeout(function() {
+            $(".talk").append("<p class='chat-answers'>It's saved!</p>");
+        }, 1000);
         temps = 0;
         doItLAter(theAddTag, 2000);
     }); // on click #save
@@ -84,6 +90,7 @@ $(document).ready(function() {
     $(document).on("click", "#inspireAction", function() {
         $("#save").remove();
         $("#st").remove();
+        $(".st-form").remove();
         $(this).remove();
         $(".talk").append("<p class='user-answers'>I don\'t know what to write</p>");
         random(chatBotInspireMe);
@@ -133,12 +140,16 @@ $(document).ready(function() {
     $(document).on("click", "#new", function() {
         $(".buttons-tag").remove();
         // WAY TO ADD A NEW TAG GOES HERE!!!!!
-        $(".talk").append('<input type="text" name="New tag" value="New tag"><button type="submit" class="btn btn-save" id="add">Add</button>');
+        $(".talk").append('<div id="input-container"><input type="text" name="new-tag" id="new-tag" placeholder="Your new tag"><button type="submit" class="btn btn-save" id="add">Add</button></div>');
         temps = 0;
     });
 
     $(document).on("click", "#add", function() {
         // ADDING THE NEWLY GENERATED TAG
+        $(".buttons-tag").remove();
+        $("input").remove();
+        $("#add").remove();
+        $(".talk").append("<p class='chat-answers'>Your new tag has been saved.</p>");
         // SAYING IT'S DONE
         doItLAter(thePostTextBoxButtons, 2000);
     });
@@ -167,6 +178,7 @@ $(document).ready(function() {
 
     // ======= THE POST TEXT BOX BUTTONS
     function thePostTextBoxButtons() {
+        $(".buttons").remove();
         $(".talk").append("<div class='buttons'></div>");
         $(".buttons").append("<div class='butts' id='seeyou'><p>See you</p></div>");
         $(".buttons").append("<div class='butts' id='other'><p>I want to do something else</p></div>");
