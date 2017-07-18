@@ -5,7 +5,6 @@ const userSchema = new Schema({
     username: String,
     name: String,
     password: String,
-    tags: Array,
     selfTalkMessages: Array
 }, {
     timestamps: { createdAt: "created_at", updatedAt: "updated_at" }

@@ -89,8 +89,6 @@ $(document).ready(function () {
         //created ajax method that will do post on /comment
         //sends message object val.
         $(".btn-save").click(function (e) {
-            console.log('wgsggwgwgwg');
-
             e.preventDefault();
             e.stopPropagation()
             var message = {

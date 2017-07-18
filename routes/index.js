@@ -48,12 +48,10 @@ router.post("/comment", (req, res, next) => {
   //takes current id user
   let userLogged = req.session.passport.user._id
   //takes current message
-  let message = req.body;
-  console.log("MESSAGEEEEE",message);
-  
-  //finds user from id and inserts message object (main.js) to user model key.
+  let message = req.body; 
+  //finds user by id and inserts message object (main.js) to user model key.
   User.findByIdAndUpdate({ _id: userLogged }, { $push: { selfTalkMessages: message } }, (err) => {
-    console.log('estem a dins');
+    console.log('finds user by id and updates');
     if (err) {
       next(err);
     }
