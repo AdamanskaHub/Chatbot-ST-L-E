@@ -17,7 +17,7 @@ const bot = new chatBot({
         "Think about positive self talk that you currently need, then write it.",
         "What do you want to write today?"
     ],
-    message: ["Awesome, you're on the right path.",
+    posMessage: ["Awesome, you're on the right path.",
         "Great self talk.",
         "Improving step by step."
     ],
@@ -51,11 +51,11 @@ const bot = new chatBot({
 });
 
 chatBot.create(bot, (err, chatBot) => {
-        if (err) {
-            throw err;
-        }
-        console.log(chatBot);
-        mongoose.connection.close();
-    })
+    if (err) {
+        throw err;
+    }
+    console.log(chatBot);
+    mongoose.connection.close();
+})
 
 //grabing info from models and insert them to the database

@@ -102,7 +102,7 @@ a:hover {
     flex-direction: column;
     /* background: linear-gradient(135deg, rgba(215, 212, 248, 1) 0%, rgba(241, 219, 245, 1) 100%) no-repeat; */
     background-color: rgba(255, 255, 255, 0.4);
-    padding: 10px;
+    padding: 20px;
 }
 
 .chat-answers {
