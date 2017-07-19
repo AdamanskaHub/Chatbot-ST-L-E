@@ -1,5 +1,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="/stylesheets/style-log.css">
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 </head>
 
 
@@ -43,3 +45,11 @@
     </div>
 
 </div>
+
+<script>
+    $(document).ready(function() {
+        $("#toggle").toggle("bounce", {
+            times: 30
+        }, "slow");
+    });
+</script>
