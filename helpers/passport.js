@@ -5,8 +5,8 @@ const FbStrategy    = require('passport-facebook').Strategy;
 const User          = require('../models/user');
 
 require("dotenv").config();
-const FACEBOOK_CLIENT_ID    = process.env.FACEBOOK_CLIENT_ID;
-const FACEBOOK_CLIENTSECRET = process.env.FACEBOOK_CLIENTSECRET;
+// const FACEBOOK_CLIENT_ID    = process.env.FACEBOOK_CLIENT_ID;
+// const FACEBOOK_CLIENTSECRET = process.env.FACEBOOK_CLIENTSECRET;
 
 
 passport.serializeUser((user, cb)   => { cb(null, user) });
@@ -30,13 +30,13 @@ passport.use(new LocalStrategy({
 	  });
 	}));
 
-passport.use(new FbStrategy({
-	  clientID: FACEBOOK_CLIENT_ID,
-	  clientSecret: FACEBOOK_CLIENTSECRET,
-	  callbackURL: "http://localhost:3000/auth/facebook/callback"
-	}, (accessToken, refreshToken, profile, done) => {
-	  done(null, profile);
-	}));
+// passport.use(new FbStrategy({
+// 	  clientID: FACEBOOK_CLIENT_ID,
+// 	  clientSecret: FACEBOOK_CLIENTSECRET,
+// 	  callbackURL: "http://localhost:3000/auth/facebook/callback"
+// 	}, (accessToken, refreshToken, profile, done) => {
+// 	  done(null, profile);
+// 	}));
 
 	
 module.exports = passport;
