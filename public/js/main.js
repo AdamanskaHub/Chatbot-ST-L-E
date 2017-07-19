@@ -1,7 +1,8 @@
 // =========================== APP LOGIC ===========================
 
 var selected;
-let firstTime = false;
+// let firstTime = false;
+let firstTime = true;
 
 function random(param) {
     selected = param[Math.floor(Math.random() * param.length)];
@@ -417,24 +418,35 @@ $(document).ready(function() {
         console.log("first time LAUNCHED)");
 
         $(".talk").append(dotdot);
-        // ========== GREETING =============
+        // ========== GREETING FIRST TIME =============
         function theFirstGreeting0() {
             $(".chatbox2").remove();
-            $(".talk").append("<p class='chat-answers'>Hello there!</p>");
+            $(".talk").append(dotdot);
             setTimeout(function() {
-                $(".talk").append(dotdot);
-                doItLAter(theFirstGreeting1, 2000);
-            }, 1000);
+                $(".chatbox2").remove();
+                $(".talk").append("<p class='chat-answers'>Hello there!</p>");
+                scrollThatStuff();
+                setTimeout(function() {
+                    $(".talk").append(dotdot);
+                    doItLAter(theFirstGreeting1, 2000);
+                }, 1000);
+            }, 700);
+
         }
         doItLAter(theFirstGreeting0, 2000);
 
         function theFirstGreeting1() {
             $(".chatbox2").remove();
-            $(".talk").append("<p class='chat-answers'>It's great to see you.</p>");
+            $(".talk").append(dotdot);
             setTimeout(function() {
-                $(".talk").append(dotdot);
-                doItLAter(theFirstGreeting2, 2000);
-            }, 1000);
+                $(".chatbox2").remove();
+                $(".talk").append("<p class='chat-answers'>It's great to see you.</p>");
+                scrollThatStuff();
+                setTimeout(function() {
+                    $(".talk").append(dotdot);
+                    doItLAter(theFirstGreeting2, 2000);
+                }, 1000);
+            }, 800);
         }
 
         function theFirstGreeting2() {
@@ -450,6 +462,7 @@ $(document).ready(function() {
             $(".talk").append("<p class='user-answers'>I dont, explain</p>");
             $(".talk").append(dotdot);
             setTimeout(function() {
+                $(".chatbox2").remove();
                 $(".talk").append("<p class='chat-answers'>Self-talk is basically your inner voice, the voice in your mind that says the things you don’t necessarily say out loud. We often don’t even realise that this running commentary is going on in the background, but our self-talk can have a big influence on how we feel about who we are.</p>");
                 $(".talk").append(dotdot);
                 scrollThatStuff();
@@ -458,12 +471,12 @@ $(document).ready(function() {
                     $(".talk").append("<p class='chat-answers'>For instance, when you thing 'I'm too lazy', you're doing negative self talk. It's harmful, especially if you repeat it often as you'll start believing it and it will define you.</br> On the contrary, if you often think 'I'm great at cooking', you will become even greater, somehow tricking your brain that will in turn make sure you are as great as you say. </p>");
                     $(".talk").append(dotdot);
                     scrollThatStuff();
-                }, 3000);
+                }, 2500);
             }, 3000);
 
             temps = 0;
             scrollThatStuff();
-            doItLAter(theNameGetting, 1500);
+            doItLAter(theNameGetting, 6500); // 2500 + 3000 + 1000
         });
 
         $(document).on("click", "#iknow", function() {
@@ -473,11 +486,12 @@ $(document).ready(function() {
             setTimeout(function() {
                 $(".chatbox2").remove();
                 $(".talk").append("<p class='chat-answers'>That's great.</p>");
+                $(".talk").append(dotdot);
                 scrollThatStuff();
             }, 1000);
             temps = 0;
             scrollThatStuff();
-            doItLAter(theNameGetting, 1500);
+            doItLAter(theNameGetting, 1800);
         });
 
         function theNameGetting() {
@@ -490,15 +504,65 @@ $(document).ready(function() {
             }, 1000);
         }
 
+        // THIS IS WHERE WE GET THE NAME OF THE USER
         function theNameGrabbing() {
             $(".chatbox2").remove();
-            $(".talk").append("<p class='chat-answers'>It's great to see you.</p>");
-            setTimeout(function() {
-                $(".talk").append('<div id="input-container"><input type="text" name="new-name" id="new-name" placeholder="How should I call you"><button type="submit" class="btn btn-save btn-hover" id="savename">Save</button></div>');
-                scrollThatStuff();
-            }, 1000);
+            $(".talk").append('<div id="input-container"><input type="text" name="new-name" id="new-name" placeholder="How should I call you"><button type="submit" class="btn btn-save btn-hover" id="savename">Save</button></div>');
+            scrollThatStuff();
         }
-    }
+
+        $(document).on("click", "#savename", function() {
+            let namegrabbed = $("#new-name").val();
+            $("#input-container").remove();
+            // WE NEED THE USER NAME TO APPEAR HERE, THIS SHOULD WORK
+            $(".talk").append("<p class='user-answers'>" + namegrabbed + "</p>");
+            $(".talk").append(dotdot);
+
+            setTimeout(function() {
+                $(".chatbox2").remove();
+                $(".talk").append("<p class='chat-answers'>You can call me Zenyatta.</p>");
+                $(".talk").append(dotdot);
+                scrollThatStuff();
+
+                setTimeout(function() {
+                    $(".chatbox2").remove();
+                    $(".talk").append("<p class='chat-answers'>Now, almost ready, tell me what you want to work on. It will be your first tag.</p>");
+                    $(".talk").append(dotdot);
+
+                    setTimeout(function() {
+                        $(".chatbox2").remove();
+                        $(".talk").append("<p class='chat-answers'>It could be 'self-esteem', 'career', 'body image', or whatever else you can think of.</p>");
+                        doItLAter(theTagGrabbing, 2000);
+                    }, 1000);
+
+                }, 1000);
+
+
+            }, 800);
+
+        });
+
+
+        function theTagGrabbing() {
+            $(".talk").append('<div id="input-container"><input type="text" name="first-tag" id="first-tag" placeholder="Enter your first tag"><button type="submit" class="btn btn-save btn-hover" id="savefirsttag">Save</button></div>');
+            scrollThatStuff();
+        }
+
+        $(document).on("click", "#savefirsttag", function() {
+            let taggrabbed = $("#first-tag").val();
+            $("#input-container").remove();
+            $(".talk").append("<p class='user-answers'>" + taggrabbed + "</p>");
+            $(".talk").append(dotdot);
+            setTimeout(function() {
+                $(".chatbox2").remove();
+                $(".talk").append("<p class='chat-answers'>Everything is now set! Let's write your first positive self talk!</p>");
+                scrollThatStuff();
+                doItLAter(theTextBox, 1200);
+            }, 1000);
+            temps = 0;
+            scrollThatStuff();
+        });
+    } // closing if (firsttime)
 
 
 });
