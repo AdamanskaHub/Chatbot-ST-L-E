@@ -212,16 +212,21 @@ $(document).ready(function() {
         $(".buttons-tag").remove();
         $(".talk").append("<p class='user-answers'>We need to grab the name of the tag and put it here!</p>");
         scrollThatStuff();
-        random(chatBotPositive);
-        chatTalk();
-        scrollThatStuff();
-        temps = 0;
-        doItLAter(thePostTextBoxButtons, 2000);
+        $(".talk").append(dotdot);
+        setTimeout(function() {
+            $(".chatbox2").remove();
+            random(chatBotPositive);
+            chatTalk();
+            scrollThatStuff();
+            temps = 0;
+            doItLAter(thePostTextBoxButtons, 2000);
+        }, 1000);
     });
 
     $(document).on("click", "#new", function() {
         console.log("in new tag button", message)
         $(".buttons-tag").remove();
+        scrollThatStuff();
         // WAY TO ADD A NEW TAG GOES HERE!!!!!
         $(".talk").append('<div id="input-container"><input type="text" name="new-tag" id="new-tag" placeholder="Your new tag"><button type="submit" class="btn btn-save btn-hover" id="add">Add</button></div>');
         scrollThatStuff();
@@ -259,8 +264,10 @@ $(document).ready(function() {
         $(".buttons-tag").remove();
         $("input").remove();
         $("#add").remove();
+        $(".talk").append(dotdot);
 
         setTimeout(function() {
+            $(".chatbox2").remove();
             chatTalk2("Your new tag has been saved.", "chat");
             scrollThatStuff();
         }, 1000);
@@ -331,14 +338,18 @@ $(document).ready(function() {
 
     $(document).on("click", "#other", function() {
         $(".buttons").remove();
-        chatTalk2("What do you want to do?", "chat");
-        temps = 0;
+        $(".talk").append(dotdot);
         setTimeout(function() {
-            $(".talk").append("<div class='buttons'></div>");
-            $(".buttons").append("<div class='butts btn-hover' id='tags'><p>See my entries by tags</p></div>");
-            $(".buttons").append("<div class='butts btn-hover' id='inspireAction'><p>Show example of self help</p></div>");
-            $(".buttons").append("<div class='butts btn-hover' id='write'><p>I'll write more</p></div>");
-            scrollThatStuff();
+            $(".chatbox2").remove();
+            chatTalk2("What do you want to do?", "chat");
+            temps = 0;
+            setTimeout(function() {
+                $(".talk").append("<div class='buttons'></div>");
+                $(".buttons").append("<div class='butts btn-hover' id='tags'><p>See my entries by tags</p></div>");
+                $(".buttons").append("<div class='butts btn-hover' id='inspireAction'><p>Show example of self help</p></div>");
+                $(".buttons").append("<div class='butts btn-hover' id='write'><p>I'll write more</p></div>");
+                scrollThatStuff();
+            }, 1000);
         }, 1000);
         scrollThatStuff();
     });
@@ -349,12 +360,17 @@ $(document).ready(function() {
         $(".buttons").remove();
         $(".talk").append("<p class='user-answers'>I want to see my entries by tags</p>");
         setTimeout(function() {
-            chatTalk2("Choose the one you want to see", "chat");
-            scrollThatStuff();
+            $(".talk").append(dotdot);
+            setTimeout(function() {
+                $(".chatbox2").remove();
+                chatTalk2("Choose the one you want to see", "chat");
+                scrollThatStuff();
+            }, 1000);
         }, 1000);
+
         temps = 0;
         scrollThatStuff();
-        doItLAter(theTagsButtons, 1500);
+        doItLAter(theTagsButtons, 3000); // it needs to be 3000 cause we already take 2000 with the others things and I wouldn't want 
     });
 
     function theTagsButtons() {
@@ -371,12 +387,13 @@ $(document).ready(function() {
     $(document).on("click", "#tagY", function() {
         $(".buttons").remove();
         $(".talk").append("<p class='user-answers'>tagY</p>");
-        //setTimeout(function() {
-
-        chatTalk2("!!!!!!!!!!! HERE GOES THE TAG LIST !!!!!!!!!!!", "chat");
-        scrollThatStuff();
-        //}, 1000);
-        //temps = 0;
+        $(".talk").append(dotdot);
+        setTimeout(function() {
+            $(".chatbox2").remove();
+            chatTalk2("!!!!!!!!!!! HERE GOES THE TAG LIST !!!!!!!!!!!", "chat");
+            scrollThatStuff();
+        }, 1000);
+        temps = 0;
         scrollThatStuff();
         doItLAter(thePostTextBoxButtons, 1500);
     });
