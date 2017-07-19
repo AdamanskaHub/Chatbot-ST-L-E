@@ -6,11 +6,11 @@ mongoose.connect('mongodb://localhost/Chatbot');
 
 const bot = new chatBot({
 
-    greeting: ["Hello  + theUser + , glad to see you.",
-        "Hey  + theUser + , you're back.",
-        "I'm happy to see you  + theUser + .",
-        "theUser +  are you ready to write?",
-        "Hello + theUser + , ready to write some positive self talk?"
+    greeting: [
+        ["Hello", ", glad to see you."],
+        ["Hey", " , you're back."],
+        ["I'm happy to see you ", "."],
+        ["Heya ", " are you ready to write?]", ["Hello ", ", ready to write some positive self talk?"]]
     ],
     letsWrite: ["Let's write your positive self talk of the day.",
         "Time to write some positive self talk.",
