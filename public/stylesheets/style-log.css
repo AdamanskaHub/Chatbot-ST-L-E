@@ -121,3 +121,7 @@
         margin: 0px 0 20px;
         font-weight: bold;
     }
+    
+    #toggle {
+        height: 20px;
+    }
