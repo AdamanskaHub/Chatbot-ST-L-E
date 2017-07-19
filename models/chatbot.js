@@ -9,7 +9,7 @@ const chatBotSchema = new Schema({
     inspireMe: Array,
     inspireQuotes: Array,
     positiveM: Array,
-
+    goodbye: Array,
 
 }, {
     timestamps: { createdAt: "created_at", updatedAt: "updated_at" }

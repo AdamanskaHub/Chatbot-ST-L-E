@@ -5,7 +5,8 @@ const userSchema = new Schema({
     username: String,
     name: String,
     password: String,
-    firstTime: { type: Boolean, default: false },
+    firstTime: { type: Boolean, default: true },
+    // CHANGE DEFAULT TO TRUE !!!!!!
     selfTalkMessages: Array
 }, {
     timestamps: { createdAt: "created_at", updatedAt: "updated_at" }

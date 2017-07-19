@@ -50,6 +50,11 @@ const bot = new chatBot({
     positiveM: ["Awesome, you're on the right path.",
         "Great self talk.",
         "Improving step by step."
+    ],
+    goodbye: ["I'll be there if you need me.",
+        "You know where to find me.",
+        "I'll be waiting for your return",
+        "I look forward to our next meeting."
     ]
 
 });
