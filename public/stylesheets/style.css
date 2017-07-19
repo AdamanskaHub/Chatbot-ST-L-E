@@ -125,7 +125,7 @@ a:hover {
 .chat-answers,
 .user-answers {
     flex-shrink: 0;
-    max-width: 80%;
+    max-width: 90%;
     padding: 10px;
     border-radius: 4px;
     margin: 0 10px 10px 10px;
