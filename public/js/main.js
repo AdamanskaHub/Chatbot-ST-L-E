@@ -206,7 +206,6 @@ $(document).ready(function() {
             scrollThatStuff();
         }, 1000);
         scrollThatStuff();
-        // IF NUMBER OF TAGS > 6 ===> fuck this no add
     }
 
     $(document).on("click", "#tag1", function() {
@@ -360,8 +359,8 @@ $(document).ready(function() {
 
     function theTagsButtons() {
         $(".talk").append("<div class='buttons'></div>");
-        $(".buttons").append("<div class='butts btn-hover' id='tag1'><p>Random tag</p></div>");
-        $(".buttons").append("<div class='butts btn-hover' id='tag2'><p>random tag</p></div>");
+        $(".buttons").append("<div class='butts btn-hover' id='tagY'><p>Random tag</p></div>");
+        $(".buttons").append("<div class='butts btn-hover' id='tagL'><p>random tag</p></div>");
         $(".buttons").append("<div class='butts btn-hover' id='forget'><p>Forget that</p></div>");
         scrollThatStuff();
     }
@@ -369,9 +368,9 @@ $(document).ready(function() {
     // ======== TAGS DISPLAY ============
 
     // HERE I'M GRABBING BY ID THAT NEED TO BE DYNAMICALLY GENERATED
-    $(document).on("click", "#tag1", function() {
+    $(document).on("click", "#tagY", function() {
         $(".buttons").remove();
-        $(".talk").append("<p class='user-answers'>tag1</p>");
+        $(".talk").append("<p class='user-answers'>tagY</p>");
         //setTimeout(function() {
 
         chatTalk2("!!!!!!!!!!! HERE GOES THE TAG LIST !!!!!!!!!!!", "chat");
@@ -383,7 +382,7 @@ $(document).ready(function() {
     });
 
     // ======== TAGS Cancel ============
-    $(document).on("click", "#tag1", function() {
+    $(document).on("click", "#forget", function() {
         $(".buttons").remove();
         $(".talk").append("<p class='user-answers'>Forget that</p>");
         $(".talk").append(dotdot);
