@@ -56,12 +56,13 @@ router.post("/comment", (req, res, next) => {
   //takes current message
   let message = req.body; 
   //finds user by id and inserts message object (main.js) to user model key.
-  User.findByIdAndUpdate({ _id: userLogged }, { $push: { selfTalkMessages: message } }, (err) => {
+  User.findByIdAndUpdate({ _id: userLogged }, { $push: { selfTalkMessages: message } }, {new: true},(err,listUpdated) => {
     console.log('finds user by id and updates');
     if (err) {
       console.log("there is an error")
       next(err);
     }
+    res.json({listUpdated})
   });
 });
 
