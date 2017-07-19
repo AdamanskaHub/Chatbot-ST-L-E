@@ -122,25 +122,26 @@ a:hover {
     padding: 20px;
 }
 
-.chat-answers {
-    margin: 0 10px 10px 10px;
-    background: linear-gradient(135deg, rgba(98, 84, 219, 1) 0%, rgba(201, 109, 216, 1) 100%);
-    display: flex;
+.chat-answers,
+.user-answers {
+    flex-shrink: 0;
+    max-width: 80%;
     padding: 10px;
     border-radius: 4px;
+    margin: 0 10px 10px 10px;
+    display: flex;
+}
+
+.chat-answers {
+    background: linear-gradient(135deg, rgba(98, 84, 219, 1) 0%, rgba(201, 109, 216, 1) 100%);
+    border-radius: 4px;
     color: white;
-    flex-shrink: 0;
 }
 
 .user-answers {
-    margin: 0 10px 10px 10px;
     background: #fff;
-    display: flex;
     align-self: flex-end;
-    padding: 10px;
-    border-radius: 4px;
     color: #333;
-    flex-shrink: 0;
 }
 
 .buttons,
@@ -239,6 +240,7 @@ input {
     width: 100%;
     justify-content: flex-start;
     margin-left: 10px;
+    flex-shrink: 0;
 }
 
 
@@ -301,7 +303,9 @@ input {
 }
 
 
-/* ======================================== */
+/* ======================================================================== 
+============================= MEDIA QUERIES!! =============================
+ ======================================================================== */
 
 @media only screen and (max-width: 768px) {
     html {
