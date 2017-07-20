@@ -122,7 +122,7 @@ $(document).ready(function() {
             setTimeout(function() {
                 $(".talk").append(dotdot);
                 doItLAter(theFirstGreeting1, 2000);
-            }, 1000);
+            }, 700);
         }, 700);
 
     }
@@ -188,7 +188,7 @@ $(document).ready(function() {
         }, 1000);
         temps = 0;
         scrollThatStuff();
-        doItLAter(theNameGetting, 1800);
+        doItLAter(theNameGetting, 2300);
     });
 
     function theNameGetting() {
@@ -269,6 +269,7 @@ $(document).ready(function() {
             $(".talk").append(dotdot); // #2
         }, 2000);
         temps = 0;
+        // firstTime = false;
         $.ajax({
             url: "http://localhost:7777/user",
             type: "POST",
@@ -280,6 +281,7 @@ $(document).ready(function() {
             },
             error: function(error) { console.log(error); }
         });
+        // $(".talk").append(dotdot);
         doItLAter(theAddTag, 2000);
 
     });
@@ -426,6 +428,7 @@ $(document).ready(function() {
                 userQuotes = "";
                 userTags = [];
                 userQuotes = response.listUpdated.selfTalkMessages;
+
                 userQuotes.forEach((quote) => {
                     userTags.push(quote.tag);
                     userTags = userTags.filter(function(item, index, inputArray) {
@@ -485,7 +488,6 @@ $(document).ready(function() {
                 userQuotes = "";
                 userTags = [];
                 userQuotes = response.listUpdated.selfTalkMessages;
-
                 userQuotes.forEach((quote) => {
                     userTags.push(quote.tag)
                     userTags = userTags.filter(function(item, index, inputArray) {
@@ -543,7 +545,6 @@ $(document).ready(function() {
 
     // ======= THE POST TEXT BOX BUTTONS
     function thePostTextBoxButtons() {
-
         $(".buttons").remove();
         $(".chatbox2").remove();
         $(".talk").append("<div class='buttons'></div>");
