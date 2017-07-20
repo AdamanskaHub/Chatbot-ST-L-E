@@ -262,7 +262,7 @@ $(document).ready(function() {
             chatTalk2("Your first self talk is saved, I'll keep it preciously! An amazing first step.", "chat");
             scrollThatStuff();
             $(".talk").append(dotdot); // #2
-        }, 1000);
+        }, 2000);
         temps = 0;
         firstTime = false;
         $.ajax({
