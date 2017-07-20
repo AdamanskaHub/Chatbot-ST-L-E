@@ -68,32 +68,36 @@ $.ajax({
     error: function(error) { console.log(error); }
 });
 
-// ============== AJAX CALL FOR USER =============
-$.ajax({
-    //get the route from route index.js chatbot
-    url: "https://selftalkchatbot.herokuapp.com/user",
-    type: "get",
-    success: function(response) {
-        console.log('FRONT', response.userPrint.selfTalkMessages);
-        console.log('First Time Get user', response.userPrint.firstTime);
-        firstTime = response.userPrint.firstTime;
-        userQuotes = response.userPrint.selfTalkMessages;
-        userNamePrint = response.userPrint.name;
-        userQuotes.forEach((quote) => {
-            userTags.push(quote.tag);
-            userTags = userTags.filter(function(item, index, inputArray) {
-                return inputArray.indexOf(item) == index;
-            });
-        });
-    },
-    error: function(error) { console.log(error); }
-});
+
 
 // ========================================================================
 // =========================== DISPLAY THE TEXT ===========================
 // ========================================================================
 
 $(document).ready(function() {
+
+
+    // ============== AJAX CALL FOR USER =============
+    $.ajax({
+        //get the route from route index.js chatbot
+        url: "https://selftalkchatbot.herokuapp.com/user",
+        type: "get",
+        success: function(response) {
+            console.log('FRONT', response.userPrint.selfTalkMessages);
+            console.log('First Time Get user', response.userPrint.firstTime);
+            firstTime = response.userPrint.firstTime;
+            console.log(firstTime)
+            userQuotes = response.userPrint.selfTalkMessages;
+            userNamePrint = response.userPrint.name;
+            userQuotes.forEach((quote) => {
+                userTags.push(quote.tag);
+                userTags = userTags.filter(function(item, index, inputArray) {
+                    return inputArray.indexOf(item) == index;
+                });
+            });
+        },
+        error: function(error) { console.log(error); }
+    });
 
     var message = "initial value";
 
