@@ -319,20 +319,20 @@ input {
  ======================================================================== */
 
 @media only screen and (max-width: 768px) {
-    html {
+    /* html {
         height: 100vh;
-    }
+    } */
     .container2 {
         height: 100vh;
     }
     .talk-box {
-        height: 95vh;
+        height: 87vh;
         display: flex;
         justify-content: center;
         margin-top: 3vh;
     }
     .bottom-box {
-        height: 100vh;
+        height: 87vh;
         margin-top: 0px;
         padding-top: 0px;
     }
@@ -341,7 +341,7 @@ input {
         width: 90vw;
         /* flex-flow: column wrap; */
         display: flex;
-        min-height: 90vh;
+        min-height: 87vh;
         align-items: baseline;
         flex-direction: column;
         /* background: linear-gradient(135deg, rgba(215, 212, 248, 1) 0%, rgba(241, 219, 245, 1) 100%) no-repeat; */
@@ -362,7 +362,7 @@ input {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        max-height: 60px;
+        /* max-height: 60px; */
     }
     .top-box>h1 {
         font-family: 'Alegreya Sans', sans-serif;
