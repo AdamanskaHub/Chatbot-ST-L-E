@@ -68,4 +68,24 @@ router.post("/comment", (req, res, next) => {
 
 
 
+router.post("/user", (req, res, next) => {
+
+    console.log("post");
+    console.log(req.body);
+    //takes current id user
+    let userLogged = req.session.passport.user._id
+    let userName = req.body.name
+    //finds user by id and inserts message object (main.js) to user model key.
+    User.findByIdAndUpdate({ _id: userLogged }, { "firstTime": false, "name": userName }, { new: true }, (err, userUpdate) => {
+        console.log('find and update user firstime');
+        if (err) {
+            console.log("there is an error")
+            next(err);
+        }
+        res.json({ userUpdate })
+    });
+});
+
+
+
 module.exports = router;
