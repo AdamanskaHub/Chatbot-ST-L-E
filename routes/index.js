@@ -5,7 +5,7 @@ var auth = require('../helpers/auth');
 const chatBot = require('../models/chatbot');
 const User = require('../models/user');
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', auth.checkLoggedIn('Sorry, please log in to access to the app', '/login'), function(req, res, next) {
     res.render('index', { title: 'The fucking awesome Chatbot' });
 });
 
