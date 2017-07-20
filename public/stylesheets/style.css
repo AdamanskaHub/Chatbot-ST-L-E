@@ -7,11 +7,6 @@ a {
 }
 */
 
-html {
-    height: 100%;
-    min-height: 800px;
-}
-
 body {
     /* background: linear-gradient(135deg, rgba(215, 212, 248, 1) 0%, rgba(241, 219, 245, 1) 100%) no-repeat; */
     background: linear-gradient(135deg, rgba(95, 80, 227, 1) 0%, rgba(195, 104, 214, 1) 100%) no-repeat;
