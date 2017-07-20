@@ -11,6 +11,7 @@ const session = require("express-session");
 const auth = require('./helpers/auth');
 const flash = require("connect-flash");
 const mongoose = require("mongoose");
+const dotenv = require("dotenv").config();
 
 const index = require('./routes/index');
 const authController = require('./routes/authController');
@@ -18,7 +19,8 @@ const authController = require('./routes/authController');
 let app = express();
 
 // Connection to DB
-mongoose.connect(`mongodb://localhost:${portDB}/${databaseName}`);
+// mongoose.connect(`mongodb://localhost:${portDB}/${databaseName}`);
+mongoose.connect(process.env.MONGODB_URI);
 
 app.set('layout', 'layouts/main');
 app.set('views', path.join(__dirname, 'views'));

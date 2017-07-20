@@ -52,7 +52,7 @@ let userName;
 // ============= AJAX CALL FOR CHATBOT =============
 $.ajax({
     //get the route from route index.js chatbot
-    url: "http://localhost:7777/chatbot",
+    url: "https://selftalkchatbot.herokuapp.com/chatbot",
     type: "get",
     success: function(response) {
         chatBotGreetings = response.bot[0].greeting;
@@ -71,7 +71,7 @@ $.ajax({
 // ============== AJAX CALL FOR USER =============
 $.ajax({
     //get the route from route index.js chatbot
-    url: "http://localhost:7777/user",
+    url: "https://selftalkchatbot.herokuapp.com/user",
     type: "get",
     success: function(response) {
         console.log('FRONT', response.userPrint.selfTalkMessages);
@@ -407,7 +407,7 @@ $(document).ready(function() {
         $(".talk").append(`<p class='user-answers'>${myTag}</p>`);
 
         $.ajax({
-            url: "http://localhost:7777/comment",
+            url: "https://selftalkchatbot.herokuapp.com/comment",
             type: "POST",
             data: {
                 message: message,
@@ -467,7 +467,7 @@ $(document).ready(function() {
         if (firstTime === true) {
             console.log("USERNAME IS TRUE SO I CHANGED IT!")
             $.ajax({
-                url: "http://localhost:7777/user",
+                url: "https://selftalkchatbot.herokuapp.com/user",
                 type: "POST",
                 data: { name: userName },
                 success: function(response) {
@@ -481,7 +481,7 @@ $(document).ready(function() {
 
         //============ AJAX CALL FOR FIRST TAG
         $.ajax({
-            url: "http://localhost:7777/comment",
+            url: "https://selftalkchatbot.herokuapp.com/comment",
             type: "POST",
             data: {
                 message: message,
