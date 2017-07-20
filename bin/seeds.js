@@ -66,6 +66,6 @@ chatBot.create(bot, (err, chatbot) => {
     }
     console.log(chatbot);
     mongoose.connection.close();
-})
+});
 
 //grabbing info from models and insert them to the database

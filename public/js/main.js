@@ -1,13 +1,13 @@
 // =========================== APP LOGIC ===========================
-var test;
-var selected;
-let firstTime = true;
+let test;
+let selected;
+let firstTime;
+let userNamePrint;
+let temps = 0;
 
 function random(param) {
     selected = param[Math.floor(Math.random() * param.length)];
 }
-
-var temps = 0;
 
 function doItLAter(fct, time) {
     temps += time;
@@ -47,6 +47,7 @@ let chatBotBye;
 //user calls
 let userQuotes;
 let userTags = [];
+let userName;
 
 // ============= AJAX CALL FOR CHATBOT =============
 $.ajax({
@@ -74,8 +75,10 @@ $.ajax({
     type: "get",
     success: function(response) {
         console.log('FRONT', response.userPrint.selfTalkMessages);
+        console.log('First Time Get user', response.userPrint.firstTime);
         firstTime = response.userPrint.firstTime;
         userQuotes = response.userPrint.selfTalkMessages;
+        userNamePrint = response.userPrint.name;
         userQuotes.forEach((quote) => {
             userTags.push(quote.tag);
             userTags = userTags.filter(function(item, index, inputArray) {
@@ -208,11 +211,13 @@ $(document).ready(function() {
     }
 
     $(document).on("click", "#savename", function() {
-        let namegrabbed = $("#new-name").val();
+        userName = $("#new-name").val();
         $("#input-container").remove();
         // WE NEED THE USER NAME TO APPEAR HERE, THIS SHOULD WORK
-        $(".talk").append("<p class='user-answers'>" + namegrabbed + "</p>");
+        $(".talk").append("<p class='user-answers'>" + userName + "</p>");
+        console.log('name saved', userName);
         $(".talk").append(dotdot);
+        scrollThatStuff();
 
         setTimeout(function() {
             $(".chatbox2").remove();
@@ -268,9 +273,12 @@ $(document).ready(function() {
         $.ajax({
             url: "http://localhost:7777/user",
             type: "POST",
-            data: { firstTime },
-            //UPDATE firstime,name
-            success: function(response) {},
+            data: { name: userName },
+            success: function(response) {
+                console.log('First Time Post user', firstTime);
+                firstTime = response.userUpdate.firstTime;
+                console.log('First Time Post user', firstTime);
+            },
             error: function(error) { console.log(error); }
         });
         doItLAter(theAddTag, 2000);
@@ -292,7 +300,7 @@ $(document).ready(function() {
         $(".chatbox2").remove();
         random(chatBotGreetings);
         // chatTalk();
-        $(".talk").append("<div class='chatbox'><img src='../img/tinyhead.png'><p class='chat-answers'>" + selected[0] + "MARC " + selected[1] + "</p></div>");
+        $(".talk").append("<div class='chatbox'><img src='../img/tinyhead.png'><p class='chat-answers'>" + selected[0] + " " + userNamePrint + " " + selected[1] + "</p></div>");
 
     }
     // ======= LETS WRITE
