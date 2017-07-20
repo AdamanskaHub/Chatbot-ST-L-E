@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 const chatBot = require('../models/chatbot');
 const user = require('../models/user');
 
-mongoose.connect('mongodb://localhost/Chatbot');
+// mongoose.connect('mongodb://localhost/Chatbot');
+mongoose.connect(process.env.MONGODB_URI);
 
 const bot = new chatBot({
 
