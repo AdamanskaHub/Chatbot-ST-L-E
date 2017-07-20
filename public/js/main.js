@@ -1,7 +1,7 @@
 // =========================== APP LOGIC ===========================
 let test;
 let selected;
-let firstTime;
+let firstTime = true;
 let userNamePrint;
 let temps = 0;
 
@@ -130,6 +130,7 @@ $(document).ready(function() {
         }, 700);
 
     }
+
     if (firstTime) { doItLAter(theFirstGreeting0, 2000); }
 
 
