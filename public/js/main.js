@@ -270,17 +270,7 @@ $(document).ready(function() {
         }, 2000);
         temps = 0;
         // firstTime = false;
-        $.ajax({
-            url: "http://localhost:7777/user",
-            type: "POST",
-            data: { name: userName },
-            success: function(response) {
-                console.log('First Time Post user', firstTime);
-                firstTime = response.userUpdate.firstTime;
-                console.log('First Time Post user', firstTime);
-            },
-            error: function(error) { console.log(error); }
-        });
+
         // $(".talk").append(dotdot);
         doItLAter(theAddTag, 2000);
 
@@ -415,6 +405,7 @@ $(document).ready(function() {
         console.log("tag was undefined", myTag);
         $(".buttons-tag").remove();
         $(".talk").append(`<p class='user-answers'>${myTag}</p>`);
+
         $.ajax({
             url: "http://localhost:7777/comment",
             type: "POST",
@@ -472,7 +463,21 @@ $(document).ready(function() {
 
         e.preventDefault();
         //adding to message array the tag.
-
+        console.log("DAFUQ IS FIRSTIME", firstTime)
+        if (firstTime === true) {
+            console.log("USERNAME IS TRUE SO I CHANGED IT!")
+            $.ajax({
+                url: "http://localhost:7777/user",
+                type: "POST",
+                data: { name: userName },
+                success: function(response) {
+                    console.log('First Time Post user', firstTime);
+                    firstTime = response.userUpdate.firstTime;
+                    console.log('First Time Post user', firstTime);
+                },
+                error: function(error) { console.log(error); }
+            });
+        }
 
         //============ AJAX CALL FOR FIRST TAG
         $.ajax({

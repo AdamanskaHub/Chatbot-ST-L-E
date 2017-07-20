@@ -47,8 +47,9 @@ router.get('/admin', auth.checkLoggedIn('You must be login', '/login'), auth.che
 });
 
 router.post("/comment", (req, res, next) => {
+    console.log("ID OF USER ON COMMENT", req.session);
 
-    console.log(req.body);
+    console.log(req.session.passport.user._id);
     console.log("post");
     console.log(req.body);
     //takes current id user
@@ -67,7 +68,7 @@ router.post("/comment", (req, res, next) => {
 });
 
 router.post("/user", (req, res, next) => {
-    console.log("post");
+    console.log("post ON /USER");
     console.log(req.body);
     //takes current id user
     let userLogged = req.session.passport.user._id
