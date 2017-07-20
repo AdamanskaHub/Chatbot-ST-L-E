@@ -48,7 +48,7 @@ let chatBotBye;
 let userQuotes;
 let userTags = [];
 
-//============== AJAX CALL FOR CHATBOT
+// ============= AJAX CALL FOR CHATBOT =============
 $.ajax({
     //get the route from route index.js chatbot
     url: "http://localhost:7777/chatbot",
@@ -67,7 +67,7 @@ $.ajax({
     error: function(error) { console.log(error); }
 });
 
-//============== AJAX CALL FOR USER
+// ============== AJAX CALL FOR USER =============
 $.ajax({
     //get the route from route index.js chatbot
     url: "http://localhost:7777/user",
@@ -103,10 +103,10 @@ $(document).ready(function() {
     // ======================== FIRST TIME PATH ===============================
     // ========================================================================
     // ========================================================================
-    // ========================================================================
 
 
     $(".talk").append(dotdot);
+
     // ========== GREETING FIRST TIME =============
     function theFirstGreeting0() {
         temps = 0;
@@ -242,14 +242,14 @@ $(document).ready(function() {
         scrollThatStuff();
     }
 
-    //======== ON CLICK SAVE 
+    // ======== ON CLICK SAVE =============
     $(document).on("click", "#save2", function(e) {
 
         e.preventDefault();
         message = $("#st").val();
         console.log("MESSAGE", message);
 
-        // ============== THE FRONT END STUFF ===============
+        // ============== DISPLAYING ST ===============
         $(".talk").append("<p class='user-answers'>" + $("#st").val() + "</p>");
         $("#inspireAction").remove();
         $("#st").remove();
@@ -276,40 +276,6 @@ $(document).ready(function() {
         doItLAter(theAddTag, 2000);
 
     });
-
-
-
-    // COMMENT ALL THAT !
-    // function theTagGrabbing() {
-    //     $(".talk").append('<div id="input-container"><input type="text" name="first-tag" id="first-tag" placeholder="Enter your first tag"><button type="submit" class="btn btn-save btn-hover" id="savefirsttag">Save</button></div>');
-    //     scrollThatStuff();
-    // }
-
-    // $(document).on("click", "#savefirsttag", function() {
-    //     let taggrabbed = $("#first-tag").val();
-    //     $("#input-container").remove();
-    //     $(".talk").append("<p class='user-answers'>" + taggrabbed + "</p>");
-    //     $(".talk").append(dotdot);
-    //     setTimeout(function() {
-    //         $(".chatbox2").remove();
-    //         chatTalk2("Everything is now set! Let's write your first positive self talk!", "chat");
-    //         scrollThatStuff();
-    //         firstTime = false;
-    //         // $.ajax({
-    //         //     url: "http://localhost:7777/user",
-    //         //     type: "POST",
-    //         //     data: { firstTime } UPDATE firstime, name and also the first tag,
-    //         //     success: function(response) {
-
-    //         //     },
-    //         //     error: function(error) { console.log(error); }
-    //         // });
-    //         doItLAter(theTextBox, 1200);
-    //     }, 1000);
-    //     temps = 0;
-    //     scrollThatStuff();
-    // });
-    // } // closing if (firsttime)
 
 
 

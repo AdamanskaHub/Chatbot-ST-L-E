@@ -7,10 +7,11 @@ mongoose.connect('mongodb://localhost/Chatbot');
 const bot = new chatBot({
 
     greeting: [
-        ["Hello", ", glad to see you."],
+        ["Hello ", ", glad to see you."],
         ["Hey", " , you're back."],
         ["I'm happy to see you ", "."],
-        ["Heya ", " are you ready to write?]", ["Hello ", ", ready to write some positive self talk?"]]
+        ["Heya ", " are you ready to write?"],
+        ["Hello ", ", ready for that self talk?"]
     ],
     letsWrite: ["Let's write your positive self talk of the day.",
         "Time to write some positive self talk.",
@@ -36,7 +37,7 @@ const bot = new chatBot({
     inspireQuotes: ['"I\'m doing better everyday."',
         '"I can handle this."',
         '"I\'ll get it."',
-        '"I\'m amazing at that"',
+        '"I\'m amazing at dealing with people"',
         '"I allow myself to fail as it allows me to improve."',
         '"I love to take action."',
         '"I like challenges and meet them head on."',
@@ -67,4 +68,4 @@ chatBot.create(bot, (err, chatbot) => {
     mongoose.connection.close();
 })
 
-//grabing info from models and insert them to the database
+//grabbing info from models and insert them to the database
