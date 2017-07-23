@@ -1,23 +1,47 @@
-<div class="login">
-  <div class="panel panel-default">
-    <div class="panel-heading">Login</div>
-    <div class="panel-body">
-      <form action="/login" method="POST">
-        <div class="form-group">
-          <label for="usernameInput">Username</label>
-          <input type="email" class="form-control" id="username" placeholder="Username" name="username">
-        </div>
-        <div class="form-group">
-          <label for="passwordInput">Password</label>
-          <input type="password" class="form-control" id="password" placeholder="Password" name="password">
-        </div>
-        <% if ( message != "" ) { %>
-          <div class="alert alert-danger" role="alert"><%= message %></div>
-        <% } %>
-        <button type="submit" class="btn btn-primary btn-block">Login</button>
-        <a href="/auth/facebook" class="btn btn-primary btn-block">Login With Facebook</a>
-      </form>  
+<head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style-log.css">
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+</head>
+
+
+<div class="bubblebox">
+    <div class="bubble">
+        <p>Welcome to the Self Help Chatbot. I'm here to help you become a better person and improve your image of yourself. Please login, or create a new account.</p>
     </div>
-  </div>
-  
+</div>
+<div class="bubblebox2">
+    <img src="../img/queue.png" id="queue" alt="queue bulle">
+</div>
+
+
+
+<div class="zen">
+    <img src="../img/zen.png" alt="monk">
+</div>
+
+<div class="login">
+    <div class="logbox">
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <label for="usernameInput">Your email address</label>
+                <input type="email" class="form-control" id="username" placeholder="someonecool@email.com" name="username">
+            </div>
+            <div class="form-group">
+                <label for="passwordInput">Your password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+            </div>
+            <% if ( message != "" ) { %>
+                <div class="alert alert-danger" role="alert">
+                    <%= message %>
+                </div>
+                <% } %>
+                    <button type="submit" class="btn butts2 btn-block">LOGIN</button>
+        </form>
+        <p class="account-message">
+            Don't have an account? <a href="/signup">Sign up</a>
+        </p>
+
+    </div>
+
 </div>

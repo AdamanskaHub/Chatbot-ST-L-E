@@ -1,25 +1,46 @@
-<div class="signup">
-  <div class="panel panel-default">
-    <div class="panel-heading">Sign Up</div>
-    <div class="panel-body">
-      <form action="/signup" method="POST">
-        <div class="form-group">
-          <label for="usernameInput">Username</label>
-          <input type="email" class="form-control" id="username" placeholder="Username" name="username">
-        </div>
-        <div class="form-group">
-          <label for="passwordInput">Password</label>
-          <input type="password" class="form-control" id="password" placeholder="Password" name="password">
-        </div>
-        <!-- <% if (typeof(message) != "undefined") { %> -->
-          <!-- <div class="alert alert-danger" role="alert"><%= message %></div> -->
-        <!-- <% } %> -->
-        <% if ( message != "" ) { %>
-          <div class="alert alert-danger" role="alert"><%= message %></div>
-        <% } %>
-        <button type="submit" class="btn btn-primary btn-block">Submit</button>
-      </form>  
+<head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style-log.css">
+</head>
+
+
+<div class="bubblebox">
+    <div class="bubble">
+        <p>You're new. </br>
+            I'm ready to help you. Create an account and we are ready to start.</p>
     </div>
-  </div>
-  
+</div>
+<div class="bubblebox2">
+    <img src="../img/queue.png" id="queue" alt="queue bulle">
+</div>
+
+
+
+<div class="zen">
+    <img src="../img/zen.png" alt="monk">
+</div>
+
+<div class="login">
+    <div class="logbox">
+        <form action="/signup" method="POST">
+            <div class="form-group">
+                <label for="usernameInput">Your email address</label>
+                <input type="email" class="form-control" id="username" placeholder="someonecool@email.com" name="username">
+            </div>
+            <div class="form-group">
+                <label for="passwordInput">Choose a password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+            </div>
+            <% if ( message != "" ) { %>
+                <div class="alert alert-danger" role="alert">
+                    <%= message %>
+                </div>
+                <% } %>
+                    <button type="submit" class="btn butts2 btn-block">CREATE ACCOUNT</button>
+        </form>
+        <p class="account-message">
+            You already have an account? <a href="/signup">Welcome back, login</a>
+        </p>
+
+    </div>
+
 </div>
